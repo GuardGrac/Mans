@@ -23,8 +23,9 @@ and password='".md5($password)."'";
 	$rows = mysqli_num_rows($result);
         if($rows==1){
 	    $_SESSION['username'] = $username;
+		$_SESSION['password'] = $password;
             // Redirect user to index.php
-	    header("Location: ../index.php");
+	    header("Location: ../profile.php");
          }else{
 	echo "<div class='form'>
 <h3>Никнейм/пароль не правилен.</h3>

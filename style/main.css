@@ -915,7 +915,6 @@ svg path {
 	line-height: 35px;
 	margin: 0;
 	color: white;
-	
 }
 
 .scroll-down nav{
@@ -931,7 +930,7 @@ svg path {
 
 .unscroll{
 	overflow:hidden;
-	}
+}
 
 .flex-width{
 	width: calc(25% - 40px);
@@ -952,6 +951,26 @@ svg path {
 	transition: 0.3s;
 }
 
+.prof-box{
+	margin: 10px;
+	flex-direction: column;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	padding: 20px;
+	overflow: hidden;
+}
+
+.prof-image{
+	border: 2px solid black;
+	width: 100px;
+	aspect-ratio: 1/1;
+	object-fit: cover;
+}
+
+.batch{
+	opacity: 0;
+}
 
 @media (min-width: 550px) and (max-width: 1024px) {
 	.flex-width{

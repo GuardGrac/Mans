@@ -18,5 +18,8 @@ switch ($action) {
         break;
     case 'loadGoods':
         loadGoods();
-        break;      
+        break;
+    case 'loadProfile':
+        loadProfile();
+        break;        
 }

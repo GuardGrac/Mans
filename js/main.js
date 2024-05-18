@@ -44,9 +44,9 @@ function searchItemsCatalog(e) {
     resultSearch = result;
 
     result.slice(0, 10).forEach(item => {
-        out +='<li>';
+        out +='<li class="border-2 border-black z-20 bg-white">';
         out +=`<a href="/catalog/${item.id}" class="flex gap-[10px] items-center">`;
-        out +=`<img src="./images/${item.img}" alt="" class="w-[70px] h-[70px] object-cover">`;
+        out +=`<img src="./images/${item.img}" alt="" class="w-[80px] h-[80px] object-cover">`;
         out +=`<h3>${item.name}</h3>`;
         out +='</a>'; 
         out +='</li>'; 

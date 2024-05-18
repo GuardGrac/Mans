@@ -522,4 +522,33 @@ clear: both;
 
 .unscroll{
 	overflow:hidden;
-	}
+}
+
+.search-bar{
+	width: 1000px;
+	padding: 10px;
+	border: 4px solid #000000;
+	border-radius:10px 0 0 10px ;
+	border-right: none;
+	outline: none;
+	display: flex;
+	font-size: 20px;
+	height: 60px;
+}
+
+.search-form-bar:has(input:focus) {
+	filter: drop-shadow(0 10px 10px rgb(0, 0, 0));
+}
+
+.reset-research{
+	text-align: center;
+	height: 60px;
+	width: 40px;
+	outline: none;
+	cursor: pointer;
+	border: 4px solid #111d5e;
+	border-radius: 0 10px 10px 0 ;
+	border-left: none;
+	font-size: 20px;
+	border-left: 4px solid #111d5e;
+}
