@@ -15,6 +15,12 @@ function init(){
         },
         goodsOut
     );
+
+    $.post(
+        "admin/core.php", 
+        {"action" : "loadCart"},
+        loadCart
+    )
 }
 
 
@@ -89,7 +95,7 @@ function goodsOut(data){
     for(var key in data) {
         out +='<div class="cart">';
         out +=`<img class="goods-image" src="/images/${data[key].img}" alt="">`;
-        out +=`<p class="name">${data[key].name}</p>`;
+        out +=`<p class="name w-full">${data[key].name}</p>`;
         out +='<div class="cost-add-wrapper">';
         out +=`<div class="cost">${data[key].cost}₽</div>`;
         out +=`<button class="add-to-cart" data-id="${key}">Купить</button>` 
@@ -101,68 +107,105 @@ function goodsOut(data){
 }
 
 function addToCart(id, data){
-    for(var key in data) {
-        if(key == id) { //если в корзине нет товара - делает равным 1
-            if(cart[id] == undefined) {
-                cart[id] = {
-                    id: id,
-                    count: 1,
-                    img: data[id].img,
-                    name: data[id].name,
-                    description: data[id].description,
-                    cost: data[id].cost,
-                    category: data[id].category,
-                };
+    console.log(cart)
+
+    var out = Object.values(cart).filter(item => item.id_goods === id);
+
+    console.log(out)
+
+    if(out.length) {
+        Object.keys(cart).map(item => {
+            if(cart[item].id_goods == id) {
+                if(parseInt(cart[item].available_quantity) > parseInt(cart[item].quantity)) {
+                    cart[item] = {
+                        id: cart[item].id,
+                        id_goods: id,
+                        quantity: parseInt(cart[item].quantity) + 1,
+                        img: data[id].img,
+                        name: data[id].name,
+                        description: data[id].description,
+                        cost: data[id].cost,
+                        category: data[id].category,
+                        available_quantity: data[id].available_quantity,
+                    };
+        
+                    saveCart(id, cart[item].quantity);
+                }
             }
-            else{ //если такой товар есть - увеличивает на единицу
-                cart[id] = {
-                    id: id,
-                    count: cart[id].count + 1,
-                    img: data[id].img,
-                    name: data[id].name,
-                    description: data[id].description,
-                    cost: data[id].cost,
-                    category: data[id].category,
-                };
-            }
-        } 
+        })
+    }
+    else{
+        if(data[id].available_quantity>0){
+            cart[id] = {
+            id: id,
+            id_goods: id,
+            quantity: 1,
+            img: data[id].img,
+            name: data[id].name,
+            description: data[id].description,
+            cost: data[id].cost,
+            category: data[id].category,
+            available_quantity: data[id].available_quantity,
+        };
+
+        insertCart(id);
+        }
+        
     }
     
     showMiniCart();
-    saveCart();
 }
 
-function saveCart(){
-    //сохраняю корзину в localStorage
-    localStorage.setItem('cart', JSON.stringify(cart)); //корзину в строку
+function saveCart(id_goods, quantity){
+    $.post(
+        "admin/core.php",
+        {
+            "action" : "saveMiniCart",
+            "id_goods" : parseInt(id_goods),
+            "count" : parseInt(quantity),
+        }
+    );
+}
+
+function insertCart(id_goods){
+    $.post(
+        "admin/core.php",
+        {
+            "action" : "insertCart",
+            "id_goods" : parseInt(id_goods),
+        }
+    );
 }
 
 function showMiniCart(){
-    var out="";
+    console.log(cart)
+    if(Object.keys(cart).length){
+        var out="";
     for(var key in cart){
         out +='<div class="mini-goods">';
         out +=`<img class="goods-image-mini" src="/images/${cart[key].img}" alt="">`;
-        out+= key +' --- '+cart[key].count+'<br>';
+        out+= cart[key].name.split(' ')[0] + ' --- ' + parseInt(cart[key].quantity) + '<br>';
         out +='</div>';
     }
     out += '<div>';
     out += '<a href="cart.html" class="links" link="#000000" vlink="000000">В корзину</a>';
     out += '</div>';
-    $('.mini-cart').html(out);
+    $('.mini-cart').html(out); 
+    }
+   
 }
 
-function loadCart(){
+function loadCart(data){
     //проверяю есть ли в localStorage запись cart
-    if (localStorage.getItem('cart')){
+    if (JSON.parse(data)){
         //если есть - расшифровываю и записываю в переменную
-        cart = JSON.parse(localStorage.getItem('cart'));
+        cart = JSON.parse(data);
         showMiniCart();
     }
 }
 
 $(document).ready(() => {
     init();
-    loadCart();
 })
 
 

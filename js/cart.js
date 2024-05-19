@@ -1,26 +1,21 @@
 var cart = {};
 
 
-function getCatalog() {
-    let json = null;
-
-    $.getJSON('/goods.json', (data) => {
-        console.log(json)
-        json = data;
-        return json;
-    });
-    // console.log(json)
-
-    return json;
+function init() {
+    $.post(
+        "admin/core.php", 
+        {"action" : "loadCart"},
+        loadCart
+    )
 }
 
 const catalog = $.getJSON('/goods.json', data => data);
 
-function loadCart(){
+function loadCart(data){    
     //проверяю есть ли в localStorage запись cart
-    if (localStorage.getItem('cart')){
+    if (JSON.parse(data)){
         //если есть - расшифровываю и записываю в переменную
-        cart = JSON.parse(localStorage.getItem('cart'));
+        cart = JSON.parse(data);
         showCart();
     }
     else{
@@ -46,15 +41,15 @@ function showCart(){
         out += `</div>`;
 
         for(var id in cart){
-            out += `<div class="product-in-cart w-[100%]">`;
+            out += `<div class="product-in-cart w-[100%]" id="${cart[id].id}">`;
             out += `<img class="cart-img" src="images\\${cart[id].img}">`;
             out += `<p class="name w-[200px]">${cart[id].name}</p>`;
             out += `<p class="description-in-cart w-[400px]">${cart[id].description}</p>`;
-            out += `<p class="w-[60px]">${cart[id].count}</p>`;
+            out += `<p class="product-count w-[60px]">${parseInt(cart[id].quantity)}</p>`;
             out += `<button data-id="${id}" class="del-goods">Удалить</button>`;
             out += `<button data-id="${id}" class="plus-goods">+</button>`;
             out += `<button data-id="${id}" class="minus-goods">-</button>`;
-            out += `<p class="w-[100px]">${cart[id].count * cart[id].cost}₽</p>`;
+            out += `<p class="w-[100px]">${parseInt(cart[id].quantity) * parseInt(cart[id].cost)}₽</p>`;
             out += `<br>`;
             out += `</div>`;
         }  
@@ -69,16 +64,27 @@ function showCart(){
 function delGoods(){
     //удаляем товар из корзины
     var id = $(this).attr('data-id');
+    deleteCart(this.closest('.product-in-cart').getAttribute('id'));
     delete cart[id];
-    saveCart();
     showCart();
 }
 
 function plusGoods(){
     //добавляет товар в корзине
     var id = $(this).attr('data-id');
-    cart[id].count = cart[id].count + 1;
-    saveCart();
+
+    if(parseInt(cart[id].available_quantity) > parseInt(cart[id].quantity)) {
+        cart[id].quantity = parseInt(cart[id].quantity) + 1;
+
+        saveCart(
+            this.closest('.product-in-cart').getAttribute('id'),
+            cart[id].quantity
+        );
+    }
+    else {
+        alert('саси')
+    }
+
     showCart();
 }
 
@@ -86,20 +92,40 @@ function minusGoods(){
     //вычитает товар из корзины
     var id = $(this).attr('data-id');
 
-    if(cart[id].count == 1){
+    if(parseInt(cart[id].quantity) == 1){
         delete cart[id];
+        deleteCart(this.closest('.product-in-cart').getAttribute('id'));
     }
     else{
-        cart[id].count = cart[id].count - 1;     
+        cart[id].quantity = parseInt(cart[id].quantity) - 1;   
+        saveCart(
+            this.closest('.product-in-cart').getAttribute('id'),
+            cart[id].quantity
+        );  
     }
 
-    saveCart();
     showCart();
 }
 
-function saveCart(){
-    //сохраняем корзину в localStorage
-    localStorage.setItem('cart', JSON.stringify(cart)); //корзину в строку
+function saveCart(id, count){
+    $.post(
+        "admin/core.php",
+        {
+            "action" : "saveCart",
+            "id" : parseInt(id),
+            "count" : parseInt(count),
+        }
+    );
+}
+
+function deleteCart(id){
+    $.post(
+        "admin/core.php",
+        {
+            "action" : "deleteCart",
+            "id" : parseInt(id),
+        }
+    );
 }
 
 function isEmpty(object) {
@@ -110,5 +136,5 @@ function isEmpty(object) {
 }
 
 $(document).ready(function(){
-    loadCart();
+    init();
 })

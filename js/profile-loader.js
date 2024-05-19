@@ -15,6 +15,7 @@ function init(){
 function profileOut(data){
     data = JSON.parse(data);
     catalog = data
+    console.log(data)
 
     var out='';
     for(var key in data) {

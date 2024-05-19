@@ -21,5 +21,20 @@ switch ($action) {
         break;
     case 'loadProfile':
         loadProfile();
-        break;        
+        break;  
+    case 'loadCart':
+        loadCart();
+        break;    
+    case 'saveCart':
+        saveCart();
+        break;   
+    case 'saveMiniCart':
+        saveMiniCart();
+        break;    
+    case 'deleteCart':
+        deleteCart();
+        break;
+    case 'insertCart':
+        insertCart();
+        break;
 }

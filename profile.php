@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(!isset($_SESSION["username"])){
+header("Location: /login-signup-form/login.php?NotRegistered");
+exit(); }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
