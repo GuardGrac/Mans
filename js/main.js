@@ -93,7 +93,7 @@ function goodsOut(data){
 
     var out='';
     for(var key in data) {
-        out +='<div class="cart">';
+        out +=`<div class="cart" onclick="openProduct(${data[key].id})">`;
         out +=`<img class="goods-image" src="/images/${data[key].img}" alt="">`;
         out +=`<p class="name w-full">${data[key].name}</p>`;
         out +='<div class="cost-add-wrapper">';
@@ -104,6 +104,10 @@ function goodsOut(data){
     }
     $('.goods-out').html(out)
     $('.add-to-cart').on('click', (e) => addToCart(e.target.getAttribute('data-id'), data));
+}
+
+function openProduct(id) {
+    window.location.href = 'product.php?id=' + id;
 }
 
 function addToCart(id, data){
@@ -126,6 +130,9 @@ function addToCart(id, data){
                         description: data[id].description,
                         cost: data[id].cost,
                         category: data[id].category,
+                        color: data[id].color,
+                        size: data[id].size,
+                        structure: data[id].structure,
                         available_quantity: data[id].available_quantity,
                     };
         
@@ -145,6 +152,9 @@ function addToCart(id, data){
             description: data[id].description,
             cost: data[id].cost,
             category: data[id].category,
+            color: data[id].color,
+            size: data[id].size,
+            structure: data[id].structure,
             available_quantity: data[id].available_quantity,
         };
 

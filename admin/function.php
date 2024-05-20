@@ -58,12 +58,23 @@ function updateGoods(){
     $descr = $_POST['gdescr'];
     $ord = $_POST['gorder'];
     $img = $_POST['gimg'];
+    $color = $_POST['gcolor'];
+    $size = $_POST['gsize'];
+    $avail_quan = $_POST['gavail_quan'];
+    $categ = $_POST['gcateg'];
+    $struct = $_POST['gstruct'];
 
     $sql = "UPDATE goods SET name = '$name',
      cost = '$cost',
       description = '$descr',
        ord = '$ord',
-        img = '$img' WHERE id = '$id' ";
+        img = '$img',
+         color = '$color',
+          size = '$size',
+           available_quantity = '$avail_quan',
+            category = '$categ',
+             structure = '$struct'
+         WHERE id = '$id' ";
 
         if(mysqli_query($conn, $sql)){
             echo "1";
@@ -82,9 +93,14 @@ function newGoods(){
     $descr = $_POST['gdescr'];
     $ord = $_POST['gorder'];
     $img = $_POST['gimg'];
+    $color = $_POST['gcolor'];
+    $size = $_POST['gsize'];
+    $avail_quan = $_POST['gavail_quan'];
+    $categ = $_POST['gcateg'];
+    $struct = $_POST['gstruct'];
 
-    $sql = "INSERT INTO goods(name, cost, description, ord, img)
-    VALUES('$name', '$cost', '$descr', '$ord', '$img')";
+    $sql = "INSERT INTO goods(name, cost, description, ord, img, color, size, available_quantity, category, structure)
+    VALUES('$name', '$cost', '$descr', '$ord', '$img', '$color', '$size', '$avail_quan', '$categ', '$struct')";
 
         if(mysqli_query($conn, $sql)){
             echo "1";

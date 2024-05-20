@@ -37,6 +37,11 @@ function selectGoods(){
             $('#gdescr').val(data.description);
             $('#gorder').val(data.ord);
             $('#gimg').val(data.img);
+            $('#gcolor').val(data.color);
+            $('#gsize').val(data.size);
+            $('#gstruct').val(data.structure);
+            $('#gavail_quan').val(data.available_quantity);
+            $('#gcateg').val(data.category);
             $('#gid').val(data.id);
         }
     );
@@ -55,6 +60,12 @@ function saveToDb(){
                 "gdescr" : $('#gdescr').val(),
                 "gorder" : $('#gorder').val(),
                 "gimg" : $('#gimg').val(),
+                "gcolor" : $('#gcolor').val(),
+                "gsize" : $('#gsize').val(),
+                "gstruct" : $('#gstruct').val(),
+                "gavail_quan" : $('#gavail_quan').val(),
+                "gcateg" : $('#gcateg').val()
+
             },
             function(data) {
                 if(data == 1){
@@ -78,6 +89,11 @@ function saveToDb(){
                 "gdescr" : $('#gdescr').val(),
                 "gorder" : $('#gorder').val(),
                 "gimg" : $('#gimg').val(),
+                "gcolor" : $('#gcolor').val(),
+                "gsize" : $('#gsize').val(),
+                "gstruct" : $('#gstruct').val(),
+                "gavail_quan" : $('#gavail_quan').val(),
+                "gcateg" : $('#gcateg').val()
             },
             function(data) {
                 if(data == 1){

@@ -32,7 +32,7 @@ if (isset($_POST['username'])){
 		$_SESSION['username'] = $username;
 		$_SESSION['password'] = $password;
 		// Redirect user to index.php
-		// header("Location: ../profile.php");
+		header("Location: ../profile.php");
 	}
 	else{
 		echo "
@@ -58,7 +58,7 @@ if (isset($_POST['username'])){
 <?php } ?>
 <script>
 if(window.location.search.includes('NotRegistered')) 
-alert("ты гей")
+alert("Вы не зарегистрированны")
 </script>
 </body>
 </html>

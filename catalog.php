@@ -86,7 +86,9 @@
 
 
         <div class="flex_box">
-            <div id="result" class="goods-out"></div>
+            <div id="result" class="goods-out">
+                
+            </div>
 
             <div class="mini-cart"></div>
         </div>
