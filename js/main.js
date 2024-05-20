@@ -98,7 +98,7 @@ function goodsOut(data){
         out +=`<p class="name w-full">${data[key].name}</p>`;
         out +='<div class="cost-add-wrapper">';
         out +=`<div class="cost">${data[key].cost}₽</div>`;
-        out +=`<button class="add-to-cart" data-id="${key}">Купить</button>` 
+        out +=`<button class="add-to-cart" data-id="${key}">Купить</button>`; 
         out +='</div>'; 
         out +='</div>';  
     }
