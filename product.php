@@ -1,6 +1,6 @@
 <?php
-require('admin/function.php');
-connect();
+require_once('admin/function.php');
+include_once('php/addToCart.php');
 $conn = connect();
 
 $query = "SELECT * FROM goods";
@@ -40,6 +40,7 @@ if (isset($_GET['id'])) {
     <link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Merriweather:300,400,400i,700&amp;subset=cyrillic-ext" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/libs/jquery/jquery-3.3.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script>
                 /** @type {import('tailwindcss').Config} */
@@ -101,6 +102,7 @@ if (isset($_GET['id'])) {
                 <img class="py-2 w-[400px]" src="/images/<?php echo htmlspecialchars($goods['img']); ?>" alt="<?php echo htmlspecialchars($goods['name']); ?>">
                 <br>
 
+                <button class="add-to-cart" data-id="<?php echo htmlspecialchars($goods['id']); ?>">Купить</button>
                 <a href="catalog.php">Вернуться к каталогу</a>
 
             </section>
@@ -185,12 +187,12 @@ if (isset($_GET['id'])) {
 
                 </div>
 
-    <script src="/libs/jquery/jquery-3.3.1.min.js"></script>
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.35/dist/lenis.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="/js/burger.js"></script>
-    <script src="js/gsap/batch-anim.js"></script>
-    <script src="js/dropDown.js"></script>
+    <script src="/js/product.js"></script>
+    <script src="/js/gsap/batch-anim.js"></script>
+    <script src="/js/dropDown.js"></script>
 </body>
 </html>

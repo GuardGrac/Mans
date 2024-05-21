@@ -73,14 +73,15 @@ function goodsOutSearched(data){
 
     var out='';
     for(var key in data) {
-        out +='<div class="cart">';
+        out +=`<div class="cart relative">`;
         out +=`<img class="goods-image" src="/images/${data[key].img}" alt="">`;
-        out +=`<p class="name">${data[key].name}</p>`;
+        out +=`<p class="name w-full">${data[key].name}</p>`;
         out +='<div class="cost-add-wrapper">';
         out +=`<div class="cost">${data[key].cost}₽</div>`;
-        out +=`<button class="add-to-cart" data-id="${key}">Купить</button>` 
+        out +=`<div class="absolute top-[0px] left-[0px] w-full h-full z-[1]" onclick="openProduct(${data[key].id})"></div>`;
+        out +=`<button class="add-to-cart" data-id="${key}">Купить</button>`;
         out +='</div>'; 
-        out +='</div>';  
+        out +='</div>';   
     }
     $('.goods-out').html(out)
     $('.add-to-cart').on('click', (e) => addToCart(e.target.getAttribute('data-id'), data));
@@ -93,11 +94,12 @@ function goodsOut(data){
 
     var out='';
     for(var key in data) {
-        out +=`<div class="cart" onclick="openProduct(${data[key].id})">`;
+        out +=`<div class="cart relative">`;
         out +=`<img class="goods-image" src="/images/${data[key].img}" alt="">`;
         out +=`<p class="name w-full">${data[key].name}</p>`;
         out +='<div class="cost-add-wrapper">';
         out +=`<div class="cost">${data[key].cost}₽</div>`;
+        out +=`<div class="absolute top-[0px] left-[0px] w-full h-full z-[1]" onclick="openProduct(${data[key].id})"></div>`;
         out +=`<button class="add-to-cart" data-id="${key}">Купить</button>`; 
         out +='</div>'; 
         out +='</div>';  

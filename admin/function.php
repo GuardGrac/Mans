@@ -6,7 +6,7 @@ $dbname = "Alpha-db";
 session_start();
 
 function connect(){
-    $conn = mysqli_connect("localhost", "root", "", "Alpha-db");
+    $conn = mysqli_connect($GLOBALS['servername'], $GLOBALS['username'], $GLOBALS['password'], $GLOBALS['dbname']);
     if(!$conn){
         die("Connection failed: " . mysqli_connect_error());
     }

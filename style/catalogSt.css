@@ -278,15 +278,16 @@ body{
 
 .cart{
 	width: 400px;
-	height: 480px;
+	height: 550px;
 	margin: 10px;
 	flex-direction: column;
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	float: left;
 	background-color: #ffffff;
 	padding: 20px;
-	 border: solid black 1px;
+	border: solid black 1px;
 }
 
 .cart .goods-image{
@@ -310,6 +311,8 @@ body{
 .cart .add-to-cart{
     font-weight: 400;
     border: 0;
+	position: relative;
+	z-index: 2;
     width: 100px;
     height: 40px;
 	color: #ffffff;

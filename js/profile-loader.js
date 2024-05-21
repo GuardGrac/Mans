@@ -15,16 +15,21 @@ function init(){
 function profileOut(data){
     data = JSON.parse(data);
     catalog = data
-    console.log(data)
-
     var out='';
-    for(var key in data) {
-        out +='<div class="prof-box">';
-        out +=`<img class="prof-image rounded-[100px]" src="/images/${data[key].img}" alt="">`;
-        out +=`<p class="usname">${data[key].username}</p>`;
-        out +=`<div class="us-login">${data[key].login}</div>`;
-        out +=`<div class="us-email">${data[key].email}</div>`;
-        out +='</div>';  
+
+    if (data.length === 0) {
+        // If empty, create and append a message element
+        out += '<div class="no-user-message">Пользователь не зарегистрирован</div>';
+    }
+    else {
+        for(var key in data) {
+            out +='<div class="prof-box">';
+            out +=`<img class="prof-image rounded-[100px]" src="/images/${data[key].img}" alt="">`;
+            out +=`<p class="usname">${data[key].username}</p>`;
+            out +=`<div class="us-login">${data[key].login}</div>`;
+            out +=`<div class="us-email">${data[key].email}</div>`;
+            out +='</div>';  
+        }
     }
     $('.prof-out').html(out)
 };

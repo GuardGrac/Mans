@@ -76,6 +76,12 @@ exit(); }
             </div>
         </div>
     </header>
+
+    <section> 
+        <form class="flex items-center justify-center batch" action="/login-signup-form/logout.php" method="post">
+            <button class="text-xl" type="submit" name="logout">Выход</button>
+        </form>
+    </section>
         
 
         <footer class="flex w-screen justify-center spacing-between-sec items-center mx-auto mt-[10vh]">
