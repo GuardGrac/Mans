@@ -1,5 +1,5 @@
 const addToCartButtons = document.querySelectorAll('.add-to-cart');
-console.log("хуй");
+console.log("sos");
 
 addToCartButtons.forEach(button => {
   button.addEventListener('click', () => {
