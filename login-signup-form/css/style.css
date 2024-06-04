@@ -1,6 +1,18 @@
 body {
      font-family:Arial, Sans-Serif;
+     background-color: #080710;
+     overflow-x: hidden;
+     overflow-y: hidden;
 }
+
+*,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 .clearfix:before, .clearfix:after{
      content: "";
      display: table;
@@ -16,31 +28,130 @@ a:hover{
      text-decoration:underline;
 }
 .form{
-     width: 300px;
-     margin: 0 auto;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 20px 35px;
 }
+
+.form *{
+     font-family: 'Poppins',sans-serif;
+     color: #ffffff;
+     letter-spacing: 0.5px;
+     outline: none;
+     border: none;
+}
+
+.background{
+     /* width: 430px;
+     height: 520px; */
+     position: absolute;
+      transform: translate(-0%,-0%);
+     left: 0%;
+     top: 0%;
+     height: 1080px;
+     width: 1920px;
+     background:url(/images/reg-log-back.jpg) no-repeat;
+}
+
+.form h3{
+     font-size: 32px;
+     font-weight: 500;
+     line-height: 42px;
+     text-align: center;
+     font-weight: bold;
+}
+
+label{
+     display: block;
+     font-weight: 700;
+     margin-top: 20px;
+     font-size: 16px;
+}
+
+::placeholder{
+     color: #e5e5e5;
+}
+
 input[type='text'], input[type='email'],
 input[type='password'], input[type='login']  {
-     width: 200px;
-     border-radius: 2px;
-     border: 1px solid #CCC;
-     padding: 10px;
-     color: #333;
+     display: block;
+     height: 50px;
+     width: 100%;
+     background-color: rgba(255,255,255,0.07);
+     border-radius: 3px;
+     padding: 0 10px;
+     margin-top: 10px;
      font-size: 14px;
-     margin-top: 10px;
+     font-weight: 300;
 }
-input[type='submit']{
-     padding: 10px 25px 8px;
-     color: #fff;
-     background-color:   #e7d03a;
-     text-shadow: rgba(231,208,58,0.24) 0 1px 0;
-     font-size: 16px;
-     box-shadow: rgba(231,208,58,0.24) 0 2px 0 0 inset,#fff 0 1px 0 0;
-     border: 1px solid  #e7d03a; 
-     border-radius: 2px;
-     margin-top: 10px;
-     cursor:pointer;
+.input-submit-log{
+     width: 100%;
+     background-color: #ffffff;
+     color: #080710;
+     padding: 15px 0;
+     font-size: 18px;
+     font-weight: 600;
+     border-radius: 5px;
+     cursor: pointer;
 }
-input[type='submit']:hover {
-     background-color: f0df74;
+.input-submit-log:hover {
+     background-color: #f0df74;
+}
+
+.input-submit-reg{
+     width: 100%;
+     background-color: #ffffff;
+     color: #080710;
+     margin-top: 20px;
+     padding: 15px 0;
+     font-size: 18px;
+     font-weight: 600;
+     border-radius: 5px;
+     cursor: pointer; 
+}
+
+.input-submit-reg:hover {
+     background-color: #f0df74;
+}
+
+.no-reg{
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     text-align: center;
+     padding-top: 20px;
+}
+
+.no-reg a{
+     padding-top: 10px;
+}
+
+.no-aut{
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     text-align: center;
+     padding-top: 20px;
+}
+
+.no-aut a{
+     padding-top: 10px;
+}
+
+.wrong-log, .wrong-reg{
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     text-align: center;
 }

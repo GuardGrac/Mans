@@ -83,7 +83,7 @@ body{
 .nav_links{
 	text-decoration: none;
 }
-.nav_links :hover{
+.nav_links:hover{
 	text-decoration: none;
 	color: #000000;
 }

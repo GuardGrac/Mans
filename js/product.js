@@ -1,30 +1,31 @@
-const addToCartButtons = document.querySelectorAll('.add-to-cart');
-console.log("sos");
+$(document).ready(function() {
+  const addToCartButtons = $('.add-to-cart');
 
-addToCartButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const id = button.dataset.id;
+  addToCartButtons.on('click', function() {
+      const id = $(this).data('id');
 
-    $.ajax({
-      url: 'php/addToCart.php',
-      method: 'POST',
-      data: {
-        id: id
-      },
-      success: function(response) {
-        if (response === 'success') {
-          console.log('Товар добавлен в корзину!');
-          // Update cart display (optional)
-        } else if (response === 'out_of_stock') {
-          console.error('Товар закончился!');
-          alert('Извините, данный товар закончился на складе.');
-        } else {
-          console.error('Ошибка добавления товара:', response);
-        }
-      },
-      error: function(error) {
-        console.error('Не удалось добавить товар:', error);
-      }
-    });
+      $.ajax({
+          url: '/php/addToCart.php', // Путь к вашему PHP файлу
+          method: 'POST',
+          data: {
+              id: id
+          },
+          success: function(response) {
+              if (response === 'success') {
+                  console.log('Товар добавлен в корзину!');
+                  // Обновление отображения корзины (опционально)
+              } else if (response === 'out_of_stock') {
+                  console.error('Товар закончился!');
+                  alert('Извините, данный товар закончился на складе.');
+              } else {
+                  console.error('Ошибка добавления товара:', response);
+              }
+          },
+          error: function(error) {
+              console.error('Не удалось добавить товар:', error);
+          }
+      });
   });
 });
+
+

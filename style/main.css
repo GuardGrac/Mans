@@ -767,7 +767,7 @@ svg path {
 	z-index: -1;
 	display: block;
 	position: relative;
-	background-color: rgba(244, 126, 0, 0.32);
+	background-color: rgba(239, 139, 31, 0.492);
 	top: 250px;
 	right: 600px;
 	width: 300px;
@@ -795,10 +795,9 @@ svg path {
 }
 
 .contact_button{
-	color:#eb7d40;
 	font-family: "Mulish", sans-serif;
 	font-weight: 400;
-    border: solid 3px #eb7d40;
+    background-color: #F7B794;
 	align-items: center;
 	text-align: center;
     width: 400px;
