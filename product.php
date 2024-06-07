@@ -1,6 +1,5 @@
 <?php
 require_once('admin/function.php');
-include_once('php/addToCart.php');
 $conn = connect();
 
 $query = "SELECT * FROM goods";
@@ -93,7 +92,7 @@ if (isset($_GET['id'])) {
 
             <section class="flex flex-col w-screen justify-center items-center mx-auto mt-[10vh]">
 
-                <h1 class="py-2"><?php echo htmlspecialchars($goods['name']); ?></h1>
+                <h1 class="py-2 text-[26px] font-bold"><?php echo htmlspecialchars($goods['name']); ?></h1>
 
                 <p class="w-[400px] py-2"><?php echo htmlspecialchars($goods['description']); ?></p>
 
@@ -102,7 +101,7 @@ if (isset($_GET['id'])) {
                 <img class="py-2 w-[400px]" src="/images/<?php echo htmlspecialchars($goods['img']); ?>" alt="<?php echo htmlspecialchars($goods['name']); ?>">
                 <br>
 
-                <button class="add-to-cart" data-id="<?php echo htmlspecialchars($goods['id']); ?>">Купить</button>
+                <button id="buy-button" class="buy-product" data-id="<?php echo htmlspecialchars($goods['id']); ?>">Купить</button>
                 <a href="catalog.php">Вернуться к каталогу</a>
 
             </section>

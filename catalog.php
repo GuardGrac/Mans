@@ -71,7 +71,7 @@
         </h1>
 
 
-        <form id="search-form" class="batch relative items-center">
+        <form id="search-form" class="batch relative items-center z-50">
             <!-- Строка поиска -->
             <label class="flex justify-center search-form-bar">
                 <input id="search" type="text" class="outline-none search-bar" spellcheck="false" autocomplete="off" placeholder="Введите что-нибудь"> 

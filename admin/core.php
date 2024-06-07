@@ -37,4 +37,13 @@ switch ($action) {
     case 'insertCart':
         insertCart();
         break;
+    case 'subtractQuantity':
+        subtractQuantity();
+        break;
+    case 'getProductInfo':
+        getProductInfo();
+        break;
+    case 'updateProfile':
+        updateProfile();
+        break;
 }

@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION["username"])){
+if(!isset($_SESSION["id"])){
 header("Location: /login-signup-form/login.php?NotRegistered");
 exit(); }
 ?>
@@ -80,6 +80,27 @@ exit(); }
     <section> 
         <form class="flex items-center justify-center batch" action="/login-signup-form/logout.php" method="post">
             <button class="text-xl" type="submit" name="logout">Выход</button>
+        </form>
+        <div class="flex items-center justify-center batch">
+            <button id="edit-profile-btn" class="text-xl">Изменить профиль</button>
+        </div>
+    </section>
+
+    <section class="edit-profile-form disable-form">
+        <form id="profileForm" class="flex items-center justify-center batch" method="post">
+            <div class="flex flex-col items-center justify-center batch editForm">
+                <label>Изображение:</label>
+                <input type="text" id="img" name="img" required>
+                <label>Имя пользователя:</label>
+                <input type="text" id="username" name="username" required>
+                <label>Логин:</label>
+                <input type="text" id="login" name="login" required>
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" name="password" required>
+                <label>Email:</label>
+                <input type="email" id="email" name="email" required>
+                <button class="text-xl" type="submit">Сохранить</button>
+            </div>
         </form>
     </section>
         

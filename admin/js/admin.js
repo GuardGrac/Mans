@@ -10,7 +10,6 @@ function init(){
 
 function showGoods(data){
     data = JSON.parse(data);
-    console.log(data);
     var out = '<select>';
     out+='<option data-id="0">Новый товар</option>';
     for(var id in data){
@@ -23,7 +22,6 @@ function showGoods(data){
 
 function selectGoods(){
     var id = $('.goods-out select option:selected').attr('data-id');
-    console.log(id)
     $.post(
         "core.php",
         {

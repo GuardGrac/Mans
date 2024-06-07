@@ -3,24 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Admin Panel</title>
 </head>
 <body>
-    
-    <div class="goods-out"></div>
-    <h2>Товар</h2>
-    <p>Имя: <input type="text" id="gname"></p>
-    <p>Стоимость: <input type="text" id="gcost"></p>
-    <p>Описание: <textarea id="gdescr"></textarea></p>
-    <p>Изображение: <input type="text" id="gimg"></p>
-    <p>Порядок: <input type="text" id="gorder"></p>
-    <p>Цвет: <input type="text" id="gcolor"></p>
-    <p>Размер(ы): <input type="text" id="gsize"></p>
-    <p>Доступное количество(на складе): <input type="text" id="gavail_quan"></p>
-    <p>Категория(и): <input type="text" id="gcateg"></p>
-    <p>Структура: <input type="text" id="gstruct"></p>
-    <input type="hidden" id="gid">
-    <button class="add-to-db">Обновить</button>
+    <div class="flex flex-col items-center justify-center">
+        <div class="goods-out border-2 flex flex-col items-center justify-center mt-10 rounded-[5px] border-black"></div>
+        <h2 class="text-3xl font-bold py-10">Товар</h2>
+        <div class="border-2 rounded-[5px] border-black">
+            <p class="w-[550px] flex justify-between text-center items-center">Имя: <input class="border-2 w-[270px]" type="text" id="gname"></p>
+            <p class="w-[550px] flex justify-between text-center items-center">Стоимость: <input class="border-2 w-[270px]" type="text" id="gcost"></p>
+            <p class="w-[550px] flex justify-between text-center items-center">Описание: <textarea class="border-2 w-[270px]" id="gdescr"></textarea></p>
+            <p class="w-[550px] flex justify-between text-center items-center">Изображение: <input class="border-2 w-[270px]" type="text" id="gimg"></p>
+            <p class="w-[550px] flex justify-between text-center items-center">Порядок: <input class="border-2 w-[270px]" type="text" id="gorder"></p>
+            <p class="w-[550px] flex justify-between text-center items-center">Цвет: <input class="border-2 w-[270px]" type="text" id="gcolor"></p>
+            <p class="w-[550px] flex justify-between text-center items-center">Размер(ы): <input class="border-2 w-[270px]" type="text" id="gsize"></p>
+            <p class="w-[550px] flex justify-between text-center items-center">Доступное количество(на складе): <input class="border-2 w-[270px]" type="text" id="gavail_quan"></p>
+            <p class="w-[550px] flex justify-between text-center items-center">Категория(и): <input class="border-2 w-[270px]" type="text" id="gcateg"></p>
+            <p class="w-[550px] flex justify-between text-center items-center">Структура: <input class="border-2 w-[270px]" type="text" id="gstruct"></p>
+            <input type="hidden" id="gid">
+        </div>
+           
+        <button class="add-to-db border-2 border-black rounded-[5px] mt-6">Обновить</button>
+    </div>
 
     <script src="/admin/js/jquery-3.3.1.min.js"></script>
     <script src="/admin/js/admin.js"></script>

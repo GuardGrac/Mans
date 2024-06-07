@@ -971,6 +971,22 @@ svg path {
 	opacity: 0;
 }
 
+.editForm input{
+	margin-bottom: 5px;
+	border: solid 2px;
+    border-radius: 5px;
+}
+
+.disable-form{
+	opacity: 0;
+	visibility:hidden;
+}
+
+.enable-form{
+	opacity: 1;
+	visibility:visible;
+}
+
 @media (min-width: 550px) and (max-width: 1024px) {
 	.flex-width{
 		width: calc(50% - 40px);

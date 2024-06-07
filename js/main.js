@@ -113,11 +113,7 @@ function openProduct(id) {
 }
 
 function addToCart(id, data){
-    console.log(cart)
-
     var out = Object.values(cart).filter(item => item.id_goods === id);
-
-    console.log(out)
 
     if(out.length) {
         Object.keys(cart).map(item => {
@@ -190,7 +186,6 @@ function insertCart(id_goods){
 }
 
 function showMiniCart(){
-    console.log(cart)
     if(Object.keys(cart).length){
         var out="";
     for(var key in cart){

@@ -134,7 +134,7 @@ function loadProfile(){
     $conn = connect();
     $usname = $_SESSION['username'];
     $passw = $_SESSION['password'];
-    $sql = "SELECT * FROM users WHERE username = '$usname'";
+    $sql = "SELECT * FROM users WHERE username = '$usname' and `password` = '".md5($passw)."'";
     $result = mysqli_query($conn, $sql);
 
     if(mysqli_num_rows($result) > 0){
@@ -149,7 +149,6 @@ function loadProfile(){
     }
     mysqli_close($conn);
 }
-
 
 function loadCart(){
     $conn = connect();
@@ -260,6 +259,90 @@ function insertCart(){
     }
     else{
         echo "Error update record:" . mysqli_error($conn);
+    }
+
+    mysqli_close($conn);
+}
+
+function subtractQuantity(){
+    $conn = connect();
+    $sid = $_POST['sid'];
+    
+    // Сначала проверим текущее количество товаров
+    $sql_check = "SELECT `available_quantity` FROM `goods` WHERE `id` = $sid";
+    $result = mysqli_query($conn, $sql_check);
+    $row = mysqli_fetch_assoc($result);
+    
+    if ($row['available_quantity'] > 0) {
+        // Обновляем количество товаров
+        $sql_update = "UPDATE `goods` SET `available_quantity` = `available_quantity` - 1 WHERE `id` = $sid";
+        
+        mysqli_query($conn, $sql_update);
+        echo "1"; // Возвращает удачный ответ
+    }
+    else if($row['available_quantity'] = 0){
+        
+    }
+    else {
+        echo "Error update record:" . mysqli_error($conn); // Возвращает неправильный ответ
+    }
+
+    mysqli_close($conn);
+}
+
+function getProductInfo() {
+    $conn = connect();
+    $sid = $_POST['sid'];
+
+    // Prepare SQL query to retrieve product information
+    $sql = "SELECT `name`, `description`, `cost`, `img`, `id`, `available_quantity` FROM `goods` WHERE `id` = $sid";
+    
+    $result = mysqli_query($conn, $sql);
+
+    // Check if query was successful
+    if ($result) {
+        // Fetch product information as an associative array
+        $productInfo = mysqli_fetch_assoc($result);
+        
+        // Free result set
+        mysqli_free_result($result);
+
+        // Close database connection
+        mysqli_close($conn);
+        echo json_encode($productInfo);
+
+        // return json_encode($productInfo);
+    } else {
+        // Close database connection
+        mysqli_close($conn);
+
+        // Return empty array if query fails
+        return array();
+    }
+}
+
+function updateProfile(){
+    $conn = connect();
+    $id = $_SESSION['id'];
+    // removes backslashes
+    $username = stripslashes($_REQUEST['username']);
+    // escapes special characters in a string
+    $username = mysqli_real_escape_string($conn, $username); 
+    $email = stripslashes($_REQUEST['email']);
+    $email = mysqli_real_escape_string($conn, $email);
+    $password = stripslashes($_REQUEST['password']);
+    $password = mysqli_real_escape_string($conn, $password);
+    $login = stripslashes($_REQUEST['login']);
+    $login = mysqli_real_escape_string($conn, $login);
+    $img = stripslashes($_REQUEST['img']);
+    $img = mysqli_real_escape_string($conn, $img);
+
+    $sql = "UPDATE `users` SET `username` = '$username', `login` = '$login', `email` = '$email', `password` = '".md5($password)."', `img` = '$img' WHERE `id` = '$id'";
+
+    if(mysqli_query($conn, $sql)){
+        echo "1";
+    } else {
+        echo "Error updating profile: " . mysqli_error($conn);
     }
 
     mysqli_close($conn);
