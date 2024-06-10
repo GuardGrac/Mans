@@ -11,6 +11,12 @@ buyButton.addEventListener('click', function() {
     subtractQuantity(productId);
 });
 
+// Кнопка возврата к каталогу
+function redirectTo(url) {
+    window.location.href = url;
+}
+
+
 // Получение информации о товаре при загрузке страницы
 $(document).ready(function() {
     $.post(
@@ -26,6 +32,7 @@ $(document).ready(function() {
             if (availableQuantity === 0) {
                 // Если товара нет в наличии, выводим сообщение и отключаем кнопку
                 buyButton.disabled = true;
+                
                 alert("К сожалению, этого товара в настоящее время нет в наличии.");
             }
         }
@@ -40,6 +47,8 @@ function subtractQuantity(productId) {
             "sid" : parseInt(productId),
         }
     );
+    alert("Спасибо за покупку.");
+    location.reload();
 }
 
 

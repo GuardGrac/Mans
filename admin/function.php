@@ -334,8 +334,42 @@ function updateProfile(){
     $password = mysqli_real_escape_string($conn, $password);
     $login = stripslashes($_REQUEST['login']);
     $login = mysqli_real_escape_string($conn, $login);
-    $img = stripslashes($_REQUEST['img']);
-    $img = mysqli_real_escape_string($conn, $img);
+    // $img = stripslashes($_REQUEST['img']);
+    // $img = mysqli_real_escape_string($conn, $img);
+
+    // Обработка загрузки изображения
+    $img = "";
+    if (isset($_FILES['fileToUpload']) && $_FILES['fileToUpload']['error'] == UPLOAD_ERR_OK) {
+        $target_dir = "uploads/";
+        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+        $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+        if ($check !== false) {
+            if ($_FILES["fileToUpload"]["size"] <= 5000000) {
+                if ($imageFileType == "jpg" || $imageFileType == "png" || $imageFileType == "jpeg" || $imageFileType == "gif") {
+                    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                        $img = basename($_FILES["fileToUpload"]["name"]);
+                    } else {
+                        echo "Извините, произошла ошибка при загрузке вашего файла.";
+                        exit;
+                    }
+                } else {
+                    echo "К сожалению, разрешены только файлы JPG, JPEG, PNG и GIF.";
+                    exit;
+                }
+            } else {
+                echo "Извините, ваш файл слишком велик.";
+                exit;
+            }
+        } else {
+            echo "Извините, но ваш файл это не изображение.";
+            exit;
+        }
+    } else {
+        $img = stripslashes($_REQUEST['img']);
+        $img = mysqli_real_escape_string($conn, $img);
+    }
 
     $sql = "UPDATE `users` SET `username` = '$username', `login` = '$login', `email` = '$email', `password` = '".md5($password)."', `img` = '$img' WHERE `id` = '$id'";
 

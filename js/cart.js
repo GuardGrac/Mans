@@ -32,24 +32,41 @@ function showCart(){
     else{
         var out = '';
 
-        out += `<div class="table-for-cart px-[60px] w-[100%]">`;
-        out += `<span class="cart-img-table">Картинка</span>`;
-        out += `<span class="name-table ml-[50px]">Название</span>`;
-        out += `<span class="description-in-cart-table ml-[150px]">Описание</span>`;
-        out += `<span class="ml-[320px]">Кол-во</span>`;
-        out += `<span class="ml-[470px]">Стоимость</span>`;
+        out += `<div class="table-for-cart w-[100%] px-4">`;
+        out += `<span class="flex basis-1/12 text-center">Картинка</span>`;
+        out += `<span class="basis-2/12 text-center">Название</span>`;
+        out += `<span class="basis-4/12 text-center">Описание</span>`;
+        out += `<span class="basis-1/12 text-left">Кол-во</span>`;
+        out += '<div class="flex basis-3/12 justify-center"></div>';
+        out += `<span class="basis-1/12 text-center">Цена</span>`;
         out += `</div>`;
 
         for(var id in cart){
             out += `<div class="product-in-cart w-[100%]" id="${cart[id].id}">`;
+            out += '<div class="flex basis-1/12 justify-center">';
             out += `<img class="cart-img" src="images\\${cart[id].img}">`;
+            out += `</div>`;
+            out += '<div class="flex basis-2/12 justify-center">';
             out += `<p class="name w-[200px]">${cart[id].name}</p>`;
+            out += `</div>`;
+            out += '<div class="flex basis-4/12 justify-center">';
             out += `<p class="description-in-cart w-[400px]">${cart[id].description}</p>`;
+            out += `</div>`;
+            out += '<div class="flex basis-1/12 justify-center">';
             out += `<p class="product-count w-[60px]">${parseInt(cart[id].quantity)}</p>`;
+            out += `</div>`;
+            out += '<div class="flex basis-1/12 justify-center">';
             out += `<button data-id="${id}" class="del-goods">Удалить</button>`;
+            out += `</div>`;
+            out += '<div class="flex basis-1/12 justify-center">';
             out += `<button data-id="${id}" class="plus-goods">+</button>`;
+            out += `</div>`;
+            out += '<div class="flex basis-1/12 justify-center">';
             out += `<button data-id="${id}" class="minus-goods">-</button>`;
+            out += `</div>`;
+            out += '<div class="flex basis-1/12 justify-center">';
             out += `<p class="w-[100px]">${parseInt(cart[id].quantity) * parseInt(cart[id].cost)}₽</p>`;
+            out += `</div>`;
             out += `<br>`;
             out += `</div>`;
         }  

@@ -190,22 +190,19 @@
         <div class="flex 2xl:flex-row xl:flex-row flex-col w-full relative justify-evenly 2xl:items-center xl:items-center">
             <span class="batch 2xl:text-[57px] xl:text-[54px] sm:text-[27px] md:text-[36px] 2md:text-[48px] lg:text-[56px] 2xl:pl-0 xl:pl-0 pl-[8vw] absolute uppercase font-['FoglihtenNo06'] 2xl:font-[1] font-[300] 2xl:leading-[86px] 2xl:-top-[120px] xl:-top-[120px] 2xl:left-36 xl:left-[50px] sm:-top-[11vh] md:-top-[14vh] 2md:-top-[19vh] lg:-top-[23vh] left-[0%]" style="user-select: none;">
                 Компания Alpha это<br class="block 2xl:hidden xl:hidden">творческое <br class="hidden 2xl:block xl:block"> объединение
-                <span class="text-[#F7B794] 2xl:-tracking-[0.03em] 2xl:pl-8 2xl:text-[80px] xl:text-[75px] sm:text-4xl md:text-5xl">профессионалов</span>
+                <span class="text-[#F7B794] 2xl:-tracking-[0.03em] 2xl:pl-8 2xl:text-[80px] xl:text-[75px] sm:text-4xl md:text-5xl font-['FoglihtenNo06']">профессионалов</span>
             </span> 
                 <img class="batch z-[-2] 2xl:h-[664px] 2xl:w-[765px] 2xl:ml-24 xl:h-[664px] xl:w-[765px] xl:ml-20 w-screen h-full object-cover aspect-square" src="/images/first_block.jpeg" alt="">
             <div class="flex flex-col 2xl:w-[740px] xl:w-[740px] xl:h-[700px] 2xl:h-[700px] w-[90vw] pt-[10%] xl:p-[3vw] pl-[8vw] 2xl:pl-[2vw] 2xl:pt-0 text-balance h-full justify-evenly 2xl:justify-center text-[21px]">
                 <p class="batch leading-[2.45rem] font-[600] mb-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                    ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat.<br> 
+                Компания Alpha специализируется на производстве высококачественных мужских футболок, сочетающих стиль и комфорт.
+                Наша продукция изготавливается из лучших материалов, обеспечивая долговечность и удобство.
+                <br> 
                 </p>
                 <p class="batch leading-[2.4rem] font-[600] 2xl:mb-[12px]">
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                    dolore eu fugiat.Duis aute irure. Duis aute irure dolor in reprehenderit
-                    in voluptate velit esse cillum dolore eu fugiat.Duis aute irure. Duis aute
-                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu <br>
-                    fugiat. Duis aute irure
+                Мы предлагаем разнообразные дизайны, от классических до современных, удовлетворяющие любые вкусы.
+                Быстрая доставка, доступные цены и внимание к деталям делают нас надежным выбором для вашего гардероба.
+                Выберите Alpha для стильной и удобной повседневной одежды.
                 </p>
                 <button class="batch flex flex-row justify-between items-center text-center w-[280px] h-[40px] bg-transparent 2xl:mt-[53px] xl:mt-[30px] sm:mt-[30px] md:mt-[30px] 2md:mt-[30px] lg:mt-[30px]">
                     Подробнее о компании
@@ -464,9 +461,9 @@
     </section>
 
     <section class="flex flex-col w-screen z-1 font-['FoglihtenNo06'] justify-center items-center mx-auto mt-[10vh]">
-        <span class="batch flex flex-col w-screen 2xl:text-[64px] xl:text-[54px] lg:text-[56px] sm:text-[36px] md:text-[42px] 2md:text-[48px] xl:pl-[10vw] 2xl:pl-52 pl-[8vw] uppercase 2xl:leading-[5.3rem] xl:leading-[5rem] lg:leading-[4.6rem] 2md:leading-[4rem] leading-[3.3rem] text-start  font-[100]">
+        <span class="font-['FoglihtenNo06'] batch flex flex-col w-screen 2xl:text-[64px] xl:text-[54px] lg:text-[56px] sm:text-[36px] md:text-[42px] 2md:text-[48px] xl:pl-[10vw] 2xl:pl-52 pl-[8vw] uppercase 2xl:leading-[5.3rem] xl:leading-[5rem] lg:leading-[4.6rem] 2md:leading-[4rem] leading-[3.3rem] text-start  font-[100]">
             Нашему опыту и профессионализму
-            <span class="batch text-[#F7B794] text-start">
+            <span class="font-['FoglihtenNo06'] batch text-[#F7B794] text-start">
                 доверяют:  
             </span>
         </span>
@@ -570,7 +567,7 @@
         <div class="flex flex-col w-screen items-start 2xl:mx-20 mx-auto">
             <div class="2xl:pl-[8vw] xl:pl-[10vw] pl-[8vw] 2xl:text-[63px] xl:text-[58px] lg:text-[56px] sm:text-[36px] md:text-[42px] 2md:text-[48px] uppercase">
                 <p class="batch font-['FoglihtenNo06']">Что говорят наши<br class="hidden 2md:block"> клиенты о 
-                    <span class="batch pb-5 text-[#F7B794]">
+                    <span class="font-['FoglihtenNo06'] batch pb-5 text-[#F7B794]">
                         нас
                     </span>
                 </p>

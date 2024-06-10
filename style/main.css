@@ -6,6 +6,7 @@
 *{
     margin: 0;
     padding: 0;
+	font-family: "Mulish", sans-serif;
 }
 
 html, body{
@@ -952,6 +953,7 @@ svg path {
 
 .prof-box{
 	margin: 10px;
+	font-size: 20px;
 	flex-direction: column;
 	display: flex;
 	align-items: center;
@@ -962,7 +964,7 @@ svg path {
 
 .prof-image{
 	border: 2px solid black;
-	width: 100px;
+	width: 150px;
 	aspect-ratio: 1/1;
 	object-fit: cover;
 }
@@ -971,20 +973,99 @@ svg path {
 	opacity: 0;
 }
 
+.editForm{
+	width: 600px;
+}
+
+.editForm div{
+	justify-content: space-between;
+	width: 100%;
+}
+
 .editForm input{
 	margin-bottom: 5px;
 	border: solid 2px;
     border-radius: 5px;
+	font-size: 20px;
+}
+
+.editForm label{
+	margin-bottom: 5px;
+	font-size: 20px;
+}
+
+.edit-button{
+    font-weight: 400;
+    border: 0;
+	position: relative;
+	z-index: 2;
+    width: 200px;
+    height: 40px;
+	color: #ffffff;
+	background-color: #000000;
+    border-radius: 25px;
+    font-size: 15px;
+	transition: background-color 0.5s;
+	transition: 0.5s ease all;
+}
+
+.edit-button:hover{
+	transition: 0.5s ease all;
+	transition: background-color 0.5s;
+	animation: pulse 2s linear infinite;
+}
+
+.exit-button{
+    font-weight: 400;
+    border: 0;
+	position: relative;
+	z-index: 2;
+    width: 100px;
+    height: 40px;
+	color: #ffffff;
+	background-color: #000000;
+    border-radius: 25px;
+    font-size: 15px;
+	transition: background-color 0.5s;
+	transition: 0.5s ease all;
+}
+
+.exit-button:hover{
+	transition: 0.5s ease all;
+	transition: background-color 0.5s;
+	animation: pulse 2s linear infinite;
+}
+
+@keyframes pulse {
+	0% {
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+	}
+	
+	70% {
+		
+		box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+	}
+	
+	100% {
+		
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+	}
 }
 
 .disable-form{
 	opacity: 0;
 	visibility:hidden;
+	transition: all 0.5s;
 }
 
 .enable-form{
 	opacity: 1;
 	visibility:visible;
+	transition: all 0.5s;
+}
+
+.prof-box label{
+	font-weight: bold;
 }
 
 @media (min-width: 550px) and (max-width: 1024px) {

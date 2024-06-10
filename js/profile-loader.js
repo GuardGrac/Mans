@@ -24,10 +24,24 @@ function profileOut(data){
     else {
         for(var key in data) {
             out +='<div class="prof-box">';
-            out +=`<img class="prof-image rounded-[100px]" src="/images/${data[key].img}" alt="">`;
-            out +=`<p class="usname">${data[key].username}</p>`;
-            out +=`<div class="us-login">${data[key].login}</div>`;
-            out +=`<div class="us-email">${data[key].email}</div>`;
+            if (data[key].img) {
+                out +=`<img class="prof-image rounded-[100px]" src="admin/uploads/${data[key].img}" alt="">`;
+            } else {
+                // Если изображение отсутствует, вставляем заменяющее изображение
+                out +=`<img class="prof-image rounded-[100px]" src="admin/uploads/no-ava.png" alt="">`;
+            }
+            out +='<div class="flex flex-row">';
+            out +='<label>Ваше имя:</label>';
+            out +=`<p class="usname"> ${data[key].username}</p>`;
+            out +='</div>';
+            out +='<div class="flex flex-row">';
+            out +='<label>Ваш логин:</label>';  
+            out +=`<div class="us-login"> ${data[key].login}</div>`;
+            out +='</div>'; 
+            out +='<div class="flex flex-row">';
+            out +='<label>Ваш Email:</label>'; 
+            out +=`<div class="us-email"> ${data[key].email}</div>`;
+            out +='</div>'; 
             out +='</div>';  
         }
     }
@@ -57,42 +71,41 @@ $(document).ready(() => {
     $('#profileForm').on('submit', function(e){
         e.preventDefault();
 
-        var formData = {
-            "action": "updateProfile",
-            "img": $('#img').val(),
-            "username": $('#username').val(),
-            "login": $('#login').val(),
-            "email": $('#email').val(),
-            "password": $('#password').val()
-        };
-
-        $.post(
-            "admin/core.php",
-            formData, function(response){
-            if(response == "1"){
-                alert("Профиль успешно обновлен");
-                // Выполняем запрос на сервер для завершения текущей сессии(затычка так как после обновления не видит данные текущей сесии)
-                $.get("login-signup-form/logout.php", function(data) {
-                    // После завершения сессии перезагружаем страницу
-                    location.reload();
-                });
-
-                // location.reload(); // Перезагрузка страницы для отображения обновленных данных
-            } else {
-                alert("Ошибка при обновлении профиля: " + response);
+        // Проверка наличия выбранного файла
+        if ($('#fileToUpload').get(0).files.length === 0) {
+            alert("Выберите изображение для загрузки");
+            return;
+        }
+    
+        var formData = new FormData();
+        formData.append("action", "updateProfile");
+        formData.append("username", $('#username').val());
+        formData.append("login", $('#login').val());
+        formData.append("email", $('#email').val());
+        formData.append("password", $('#password').val());
+        formData.append("fileToUpload", $('#fileToUpload')[0].files[0]);
+    
+        $.ajax({
+            url: "admin/core.php",
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                if(response == "1"){
+                    alert("Профиль успешно обновлен");
+                    // Выполняем запрос на сервер для завершения текущей сессии(затычка так как после обновления не видит данные текущей сесии)
+                    $.get("login-signup-form/logout.php", function(data) {
+                        // После завершения сессии перезагружаем страницу
+                        location.reload();
+                    });
+    
+                    // location.reload(); // Перезагрузка страницы для отображения обновленных данных
+                } else {
+                    alert("Ошибка при обновлении профиля: " + response);
+                }
             }
         });
     });
-
-    // $('#edit-profile-btn').on('click', function() {
-    //     // Отображаем форму редактирования профиля
-    //     if (edit.classList.contains('enable-form')) {
-    //         edit.classList.remove('enable-form') 
-    //         edit.classList.remove('enable-form')
-    //     }
-    //     else {
-    //         edit.classList.add('disable-form')
-    //         edit.classList.add('disable-form')
-    //     }      
-    // });
+    
 })

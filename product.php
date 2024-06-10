@@ -90,20 +90,65 @@ if (isset($_GET['id'])) {
                 </div>
             </nav>
 
-            <section class="flex flex-col w-screen justify-center items-center mx-auto mt-[10vh]">
+            <section class="mx-auto mt-[10vh] px-[15vh]">
+                <div class="flex flex-row w-full justify-center bg-slate-100 rounded-[25px]">
 
-                <h1 class="py-2 text-[26px] font-bold"><?php echo htmlspecialchars($goods['name']); ?></h1>
+                <div class="w-[800px] flex justify-center">
+                    <img class="py-2 w-[700px]" src="/images/<?php echo htmlspecialchars($goods['img']); ?>" alt="<?php echo htmlspecialchars($goods['name']); ?>">
+                </div>
 
-                <p class="w-[400px] py-2"><?php echo htmlspecialchars($goods['description']); ?></p>
+                    <div class="flex flex-col h-full w-[560px]">
+                        <h1 class="py-2 text-[32px] font-bold"><?php echo htmlspecialchars($goods['name']); ?></h1>
 
-                <p class="py-2">Цена: <?php echo htmlspecialchars($goods['cost']); ?> руб.</p>
+                        <p class="py-2 text-[28px] font-bold">Цена: <?php echo htmlspecialchars($goods['cost']); ?> руб.</p>
 
-                <img class="py-2 w-[400px]" src="/images/<?php echo htmlspecialchars($goods['img']); ?>" alt="<?php echo htmlspecialchars($goods['name']); ?>">
-                <br>
+                        <p class=" py-2 text-[22px] font-bold">Размер(ы): <span class="font-normal"><?php echo htmlspecialchars($goods['size']); ?></span></p>
 
-                <button id="buy-button" class="buy-product" data-id="<?php echo htmlspecialchars($goods['id']); ?>">Купить</button>
-                <a href="catalog.php">Вернуться к каталогу</a>
+                        <p class=" py-2 text-[22px] font-bold">Цвет: <span class="font-normal"><?php echo htmlspecialchars($goods['color']); ?></span></p>
+                        
+                        <p class=" py-2 text-[22px] font-bold">Стуктура: <span class="font-normal"><?php echo htmlspecialchars($goods['structure']); ?></span></p>
+                        
+                        <p class=" py-2 text-[22px] font-bold">Имеется на складе: <span class="font-normal">
+                            <?php if ($goods['available_quantity'] == 0) {
+                                echo 'Товар отсутствует';
+                            } else {
+                                echo htmlspecialchars($goods['available_quantity']) . ' шт.';
+                            } ?>
+                        </span></p>
 
+                        <div class="flex flex-row justify-center items-center w-fit my-2">
+                            <button id="buy-button" class="buy-product buy-button mx-2" data-id="<?php echo htmlspecialchars($goods['id']); ?>">Купить</button>
+                            <button class="backToCatalog-button mx-2" onclick="redirectTo('http://mans/catalog.php')">Вернуться к каталогу</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="flex flex-col w-full justify-center">
+
+                    <p class="py-2 text-[32px] font-bold">
+                        О товаре
+                    </p>
+
+                    <p class=" py-2 text-[22px] font-bold">Описание: <span class="font-normal"><?php echo htmlspecialchars($goods['description']); ?></span></p>
+
+                    <p class=" py-2 text-[22px] font-bold">Размер(ы): <span class="font-normal"><?php echo htmlspecialchars($goods['size']); ?></span></p>
+
+                    <p class=" py-2 text-[22px] font-bold">Цвет: <span class="font-normal"><?php echo htmlspecialchars($goods['color']); ?></span></p>
+                    
+                    <p class=" py-2 text-[22px] font-bold">Стуктура: <span class="font-normal"><?php echo htmlspecialchars($goods['structure']); ?></span></p>
+                    
+                    <p class=" py-2 text-[22px] font-bold">Имеется на складе: <span class="font-normal">
+                        <?php if ($goods['available_quantity'] == 0) {
+                            echo 'Товар отсутствует';
+                        } else {
+                            echo htmlspecialchars($goods['available_quantity']) . ' шт.';
+                        } ?>
+                    </span></p>
+                
+                </div>
+
+                
             </section>
 
                 <footer class="flex w-screen justify-center spacing-between-sec items-center mx-auto mt-[10vh]">

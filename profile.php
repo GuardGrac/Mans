@@ -70,36 +70,43 @@ exit(); }
     </nav>
 
     <header class="mt-[10vh]">
-        <div class="flex items-center justify-center">
+        <div class="flex flex-col items-center justify-center">
             <div class="prof-out batch">
 
+            </div>
+            <form class="flex items-center justify-center batch" action="/login-signup-form/logout.php" method="post">
+                <button class="text-xl exit-button" type="submit" name="logout">Выход</button>
+            </form>
+            <div class="flex items-center justify-center batch">
+                <button id="edit-profile-btn" class="text-xl edit-button mt-1">Изменить профиль</button>
             </div>
         </div>
     </header>
 
-    <section> 
-        <form class="flex items-center justify-center batch" action="/login-signup-form/logout.php" method="post">
-            <button class="text-xl" type="submit" name="logout">Выход</button>
-        </form>
-        <div class="flex items-center justify-center batch">
-            <button id="edit-profile-btn" class="text-xl">Изменить профиль</button>
-        </div>
-    </section>
-
-    <section class="edit-profile-form disable-form">
-        <form id="profileForm" class="flex items-center justify-center batch" method="post">
+    <section class="edit-profile-form disable-form mt-2">
+        <form id="profileForm" class="flex items-center justify-center batch" method="post" enctype="multipart/form-data" action="function.php">
             <div class="flex flex-col items-center justify-center batch editForm">
-                <label>Изображение:</label>
-                <input type="text" id="img" name="img" required>
-                <label>Имя пользователя:</label>
-                <input type="text" id="username" name="username" required>
-                <label>Логин:</label>
-                <input type="text" id="login" name="login" required>
-                <label for="password">Пароль:</label>
-                <input type="password" id="password" name="password" required>
-                <label>Email:</label>
-                <input type="email" id="email" name="email" required>
-                <button class="text-xl" type="submit">Сохранить</button>
+                <div class="flex">
+                    <label>Изображение:</label>
+                    <input type="file" id="fileToUpload" name="fileToUpload">
+                </div>
+                <div class="flex">
+                    <label>Имя пользователя:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="flex">
+                    <label>Логин:</label>
+                    <input type="text" id="login" name="login" required>
+                </div>
+                <div class="flex">
+                    <label for="password">Пароль:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="flex">
+                    <label>Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <button class="text-xl edit-button" type="submit">Сохранить</button>
             </div>
         </form>
     </section>

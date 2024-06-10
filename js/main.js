@@ -99,8 +99,15 @@ function goodsOut(data){
         out +=`<p class="name w-full">${data[key].name}</p>`;
         out +='<div class="cost-add-wrapper">';
         out +=`<div class="cost">${data[key].cost}₽</div>`;
-        out +=`<div class="absolute top-[0px] left-[0px] w-full h-full z-[1]" onclick="openProduct(${data[key].id})"></div>`;
-        out +=`<button class="add-to-cart" data-id="${key}">Купить</button>`; 
+        // out +=`<div class="absolute top-[0px] left-[0px] w-full h-full z-[1]" onclick="openProduct(${data[key].id})"></div>`;
+        // out +=`<button class="add-to-cart" data-id="${key}">Купить</button>`;
+        if (data[key].available_quantity > 0) {
+            out += `<div class="absolute top-[0px] left-[0px] w-full h-full z-[1]" onclick="openProduct(${data[key].id})"></div>`;
+            out += `<button class="add-to-cart" data-id="${key}">Купить</button>`;
+        } else {
+            out += `<div class="absolute top-[0px] left-[0px] w-full h-full z-[1]" onclick="openProduct(${data[key].id})"></div>`;
+            out += `<button class="empty-cart-btn" data-id="${key}" disabled>Нет в наличии</button>`;
+        } 
         out +='</div>'; 
         out +='</div>';  
     }
@@ -109,7 +116,7 @@ function goodsOut(data){
 }
 
 function openProduct(id) {
-    window.location.href = 'product.php?id=' + id;
+      window.location.href = 'product.php?id=' + id;  
 }
 
 function addToCart(id, data){
