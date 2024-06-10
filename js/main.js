@@ -94,7 +94,7 @@ function goodsOut(data){
 
     var out='';
     for(var key in data) {
-        out +=`<div class="cart relative">`;
+        out +=`<div class="cart relative bg-stone-50 rounded-[25px]">`;
         out +=`<img class="goods-image" src="/images/${data[key].img}" alt="">`;
         out +=`<p class="name w-full">${data[key].name}</p>`;
         out +='<div class="cost-add-wrapper">';

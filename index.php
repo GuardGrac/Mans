@@ -55,7 +55,7 @@
                         Каталог
                     </a>
                     <p class="2xl:text-[21px] xl:text-[21px] 2xl:flex hidden xl:flex mx-3">
-                        +7 905 360 5555
+                        +7 960 860 24-21
                     </p>
                     <button class="nav__toggle-menu z-40 2xl:pl-[9vw] xl:pl-[8vw] xl:pr-[3vw] pl-0">
                         <span></span>

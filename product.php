@@ -91,7 +91,7 @@ if (isset($_GET['id'])) {
             </nav>
 
             <section class="mx-auto mt-[10vh] px-[15vh]">
-                <div class="flex flex-row w-full justify-center bg-slate-100 rounded-[25px]">
+                <div class="flex flex-row w-full justify-center bg-stone-100 rounded-[25px]">
 
                 <div class="w-[800px] flex justify-center">
                     <img class="py-2 w-[700px]" src="/images/<?php echo htmlspecialchars($goods['img']); ?>" alt="<?php echo htmlspecialchars($goods['name']); ?>">
