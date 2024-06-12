@@ -46,4 +46,16 @@ switch ($action) {
     case 'updateProfile':
         updateProfile();
         break;
+    case 'initUsers':
+        initUsers();
+        break;
+    case 'selectOneUser':
+        selectOneUser();
+        break;
+    case 'updateUsers':
+        updateUsers();
+        break;
+    case 'newUser':
+        newUser();
+        break;
 }

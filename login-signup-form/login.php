@@ -10,7 +10,6 @@
 <body>
 <?php
 require('db.php');
-session_start();
 // If form submitted, insert values into the database.
 if (isset($_POST['username'])){
 	// removes backslashes
@@ -26,16 +25,27 @@ if (isset($_POST['username'])){
 	$result = mysqli_query($con, $query) or die(mysqli_error($con));
 	$rows = mysqli_num_rows($result);
 
+	session_start();
 	while($row = mysqli_fetch_assoc($result)) {
 		$out[$row["id"]] = $row;
+		$_SESSION['img'] = $row["img"];
+		$_SESSION['role_id'] = $row["role_id"];
 	}
 
 	if($rows==1) {
 		$_SESSION['id'] = array_keys($out)[0];
 		$_SESSION['username'] = $username;
 		$_SESSION['password'] = $password;
+		// if(isset($_SESSION['role_id'])){
+			
+		// }
+		// else{
 		// Redirect user to index.php
-		header("Location: ../profile.php");
+		header("Location: ../profile.php");	
+		// }
+		// Сохранить роль
+
+		
 	}
 	else{
 		echo "
@@ -51,7 +61,9 @@ if (isset($_POST['username'])){
 				</div>
 			</div>";
 	}
-    }else{
+	echo '<pre>';  print_r($_SESSION); echo '</pre>';
+	session_write_close();
+} else {
 ?>
 	<div class="background"></div>
 		<div class="form">
@@ -70,7 +82,7 @@ if (isset($_POST['username'])){
 					<a href='registration.php'>Зарегистрируйтесь здесь</a>
 				</div>
 		</div>
-		<?php } ?>
+		<?php }?>
 		<script>
 		if(window.location.search.includes('NotRegistered')) 
 		alert("Вы не зарегистрированны")

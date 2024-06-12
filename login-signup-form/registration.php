@@ -41,8 +41,8 @@ if (isset($_REQUEST['username'])){
             </div>";
         } else {
             // Вставка нового пользователя
-            $query = "INSERT into `users` (username, password, email, login)
-                      VALUES ('$username', '".md5($password)."', '$email', '$login')";
+            $query = "INSERT into `users` (username, password, email, login, role_id)
+                      VALUES ('$username', '".md5($password)."', '$email', '$login', '0')";
             $result = mysqli_query($con, $query);
             if ($result) {
                 echo "<div class='background'>

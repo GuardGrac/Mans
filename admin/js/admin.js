@@ -6,6 +6,96 @@ function init(){
         },
         showGoods
     );
+    $.post(
+        "core.php",
+        {
+            "action" : "initUsers"
+        },
+        showUsers
+    );
+}
+
+function showUsers(data){
+    data = JSON.parse(data);
+    var out = '<select>';
+    out+='<option data-id="0">Новый пользователь</option>';
+    for(var id in data){
+        out += `<option data-id="${id}">${data[id].username}</option>`;
+    }
+    out += `</select>`;
+    $('.users-out').html(out);
+    $('.users-out select').on('change', selectUsers);
+}
+
+
+function selectUsers(){
+    var id = $('.users-out select option:selected').attr('data-id');
+    $.post(
+        "core.php",
+        {
+            "action" : "selectOneUser",
+            "uid" : id
+        },
+        function(data){
+            data = JSON.parse(data);
+            $('#uname').val(data.username);
+            $('#ulogin').val(data.login);
+            $('#upassword').val(data.password);
+            $('#uemail').val(data.email);
+            $('#urole_id').val(data.role_id);
+            $('#uid').val(data.id);
+        }
+    );
+}
+
+function saveToDbUSer(){
+    var id = $('#uid').val();
+    if(id!="") {
+        $.post(
+            "core.php",
+            {
+                "action" : "updateUsers",
+                "uid" : id,
+                "uname" : $('#uname').val(),
+                "ulogin" : $('#ulogin').val(),
+                "upassword" : $('#upassword').val(),
+                "uemail" : $('#uemail').val(),
+                "urole_id" : $('#urole_id').val(),
+            },
+            function(data) {
+                if(data == 1){
+                    alert('Пользователь добавлен');
+                    init(); 
+                }
+                else{
+                    console.log(data);
+                }
+            }
+        );
+    }
+    else{
+        $.post(
+            "core.php",
+            {
+                "action" : "newUser",
+                "uid" : 0,
+                "uname" : $('#uname').val(),
+                "ulogin" : $('#ulogin').val(),
+                "upassword" : $('#upassword').val(),
+                "uemail" : $('#uemail').val(),
+                "urole_id" : $('#urole_id').val(),
+            },
+            function(data) {
+                if(data == 1){
+                    alert('Пользователь добавлен');
+                    init(); 
+                }
+                else{
+                    console.log(data);
+                }
+            }
+        );
+    }
 }
 
 function showGoods(data){
@@ -109,6 +199,7 @@ function saveToDb(){
 $(document).ready(function (){
       init();
       $('.add-to-db').on('click', saveToDb);
+      $('.add-to-db-user').on('click', saveToDbUSer);
 });
 
   

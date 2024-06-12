@@ -1,8 +1,8 @@
 <?php
 session_start();
-if(!isset($_SESSION["id"])){
-header("Location: /login-signup-form/login.php?NotRegistered");
-exit(); }
+// if(!isset($_SESSION["id"])){
+//     header("Location: /login-signup-form/login.php?NotRegistered");
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +44,7 @@ exit(); }
     </script>
 </head>
 <body>
-
+<!-- <?echo '<pre>';  print_r($_SESSION); echo '</pre>';?> -->
     <nav class="w-screen bg-white/90 z-10 py-1 pt-[2vh] fixed 2xl:mx-auto xl:px-0 xl:mx-auto px-[8vw] 2xl:px-[4vw] nav_links">
         <div class="flex flex-row justify-between text-center items-center text-nowrap nav_links">
             <div class="flex flex-row text-center items-center">

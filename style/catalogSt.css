@@ -443,13 +443,21 @@ clear: both;
 
 .mini-cart{
 	display: block;
-	width: 200px;
+	width: 300px;
 	justify-content: right;
 }
 
 .mini-goods{
 	font-family: "Mulish", sans-serif;
     font-size: 20px;
+	border-bottom: 2px solid black;
+	display: flex;
+}
+
+.mini-goods p{
+	font-family: "Mulish", sans-serif;
+    font-size: 20px;
+	font-weight: 700;
 }
 
 .goods-image-mini{
@@ -457,7 +465,44 @@ clear: both;
 	height: 80px;
 }
 
+.name-count-split{
+	display: flex;
+	width: 100%;
+	text-align: center;
+	align-items: center;
+	justify-content: space-between;
+}
 
+.to-cart{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 15px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 15px;
+}
+
+.to-cart button{
+	display: flex;
+	justify-content: space-between;
+	background-color: black;
+	color: white;
+	border-radius: 25px;
+	padding-left: 20px;
+	padding-right: 20px;
+	font-size: 25px;
+	height: 50px;
+	align-items: center;
+	width: 100%;
+}
+
+.to-cart button:hover{
+	color: #ffffff;
+	transition: 0.5s ease all;
+	transition: background-color 0.5s;
+	animation: pulse 2s linear infinite;
+}
 
 .flex_box{
 	display: flex;

@@ -57,9 +57,27 @@
                     <p class="2xl:text-[21px] xl:text-[21px] 2xl:flex hidden xl:flex mx-3">
                         +7 960 860 24-21
                     </p>
-                    <button class="nav__toggle-menu z-40 2xl:pl-[9vw] xl:pl-[8vw] xl:pr-[3vw] pl-0">
-                        <span></span>
-                    </button>
+                    
+                    <div class="flex items-center gap-[20px]">
+                        <button class="nav__toggle-menu z-40 2xl:pl-[9vw] xl:pl-[8vw] xl:pr-[3vw] pl-0">
+                            <span></span>
+                        </button>
+
+                        <?session_start();?>
+                        <?if(!empty($_SESSION['username'])): ?>
+                            <a href="/profile.php" class="flex items-center gap-[10px] text-xl font-['Mulish']">
+                                <span><?=$_SESSION['username']?></span>
+                                
+                                <!-- <div class="ava-user w-[40px] h-[40px] bg-[#121212] rounded-[100%] overflow-hidden z-40 2xl:pl-[9vw] xl:pl-[8vw] xl:pr-[3vw] pl-0">
+                                    <img class="object-cover" src="/admin/uploads/<?=$_SESSION['img']?>" alt="/admin/uploads/no-ava.jpg">
+                                </div> -->
+                                <div class="ava-user w-[45px] h-[45px] rounded-[100%] overflow-hidden z-40 2xl:pl-[9vw] xl:pl-[8vw] xl:pr-[3vw] pl-0">
+                                    <?php $imgSrc = !empty($_SESSION['img']) ? "/admin/uploads/" . $_SESSION['img'] : "/admin/uploads/no-ava.png"; ?>
+                                    <img class="object-cover" src="<?php echo $imgSrc; ?>">
+                                </div>
+                            </a>
+                        <?endif;?>
+                    </div>
                 </div>
             </div>
     </nav>

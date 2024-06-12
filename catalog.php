@@ -56,9 +56,23 @@
                 <p class="2xl:text-[21px] xl:text-[21px] 2xl:flex hidden xl:flex mx-3">
                     +7 960 860 24-21
                 </p>
-                <button class="nav__toggle-menu z-40 2xl:pl-[9vw] xl:pl-[8vw] xl:pr-[3vw] pl-0">
-                    <span></span>
-                </button>
+                
+                <div class="flex items-center gap-[20px]">
+                    <button class="nav__toggle-menu z-40 2xl:pl-[9vw] xl:pl-[8vw] xl:pr-[3vw] pl-0">
+                        <span></span>
+                    </button>
+
+                    <?session_start();?>
+                    <?if(!empty($_SESSION['username'])): ?>
+                        <a href="/profile.php" class="flex items-center gap-[10px]">
+                            <span><?=$_SESSION['username']?></span>
+                            
+                            <div class="ava-user w-[40px] h-[40px] bg-[#121212] rounded-[100%] overflow-hidden z-40 2xl:pl-[9vw] xl:pl-[8vw] xl:pr-[3vw] pl-0">
+                                <img class="object-cover" src="/admin/uploads/<?=$_SESSION['img']?>" alt="">
+                            </div>
+                        </a>
+                    <?endif;?>
+                </div>
             </div>
         </div>
     </nav>
@@ -90,7 +104,7 @@
                 
             </div>
 
-            <div class="mini-cart"></div>
+            <div class="mini-cart bg-stone-100 border-2 border-black rounded-[25px] h-full"></div>
         </div>
     </main>
 

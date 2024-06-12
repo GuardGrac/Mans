@@ -70,14 +70,13 @@ $(document).ready(() => {
 
     $('#profileForm').on('submit', function(e){
         e.preventDefault();
-
-        // Проверка наличия выбранного файла
-        if ($('#fileToUpload').get(0).files.length === 0) {
-            alert("Выберите изображение для загрузки");
-            return;
-        }
     
         var formData = new FormData();
+
+        if ($('#fileToUpload').get(0).files.length === 0) {
+            formData.append("fileToUpload", 'no-ava.png');
+        }
+
         formData.append("action", "updateProfile");
         formData.append("username", $('#username').val());
         formData.append("login", $('#login').val());
@@ -95,12 +94,12 @@ $(document).ready(() => {
                 if(response == "1"){
                     alert("Профиль успешно обновлен");
                     // Выполняем запрос на сервер для завершения текущей сессии(затычка так как после обновления не видит данные текущей сесии)
-                    $.get("login-signup-form/logout.php", function(data) {
+                    // $.get("login-signup-form/logout.php", function(data) {
                         // После завершения сессии перезагружаем страницу
-                        location.reload();
-                    });
+                        // location.reload();
+                    // });
     
-                    // location.reload(); // Перезагрузка страницы для отображения обновленных данных
+                    window.location.href = "/profile.php" // Перезагрузка страницы для отображения обновленных данных
                 } else {
                     alert("Ошибка при обновлении профиля: " + response);
                 }

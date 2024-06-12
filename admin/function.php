@@ -3,7 +3,7 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "Alpha-db";
-session_start();
+
 
 function connect(){
     $conn = mysqli_connect($GLOBALS['servername'], $GLOBALS['username'], $GLOBALS['password'], $GLOBALS['dbname']);
@@ -12,6 +12,25 @@ function connect(){
     }
     mysqli_set_charset($conn, "utf8");
     return $conn;
+}
+
+function initUsers(){
+    //вывожу список товаров
+    $conn = connect();
+    $sql = "SELECT id, username FROM users";
+    $result = mysqli_query($conn, $sql);
+
+    if(mysqli_num_rows($result) > 0){
+        $out = array();
+        while($row = mysqli_fetch_assoc($result)){
+            $out[$row["id"]] = $row;
+        }
+        echo json_encode($out);
+    }
+    else{
+        echo "0";
+    }
+    mysqli_close($conn);
 }
 
 function init() {
@@ -26,6 +45,23 @@ function init() {
             $out[$row["id"]] = $row;
         }
         echo json_encode($out);
+    }
+    else{
+        echo "0";
+    }
+    mysqli_close($conn);
+}
+
+
+function selectOneUser(){
+    $conn = connect();
+    $id = $_POST['uid'];
+    $sql = "SELECT * FROM users WHERE id = '$id'";
+    $result = mysqli_query($conn, $sql);
+
+    if(mysqli_num_rows($result) > 0){
+        $row = mysqli_fetch_assoc($result);
+        echo json_encode($row);
     }
     else{
         echo "0";
@@ -48,6 +84,35 @@ function selectOneGoods(){
     }
     mysqli_close($conn);
 }
+
+
+function updateUsers(){
+    echo "0";
+    $conn = connect();
+    $id = $_POST['uid'];
+    $uname = $_POST['uname'];
+    $ulogin = $_POST['ulogin'];
+    $upassword = $_POST['upassword'];
+    $uemail = $_POST['uemail'];
+    $urole_id = $_POST['urole_id'];
+
+    $sql = "UPDATE users SET username = '$uname',
+     login = '$ulogin',
+      password = '".md5($upassword)."',
+       email = '$uemail',
+        role_id = '$urole_id'
+         WHERE id = '$id' ";
+
+        if(mysqli_query($conn, $sql)){
+            echo "1";
+        }
+        else{
+            echo "Error update record:" . mysqli_error($conn);
+        }
+
+    mysqli_close($conn);
+}
+
 
 function updateGoods(){
     echo "0";
@@ -81,6 +146,31 @@ function updateGoods(){
         }
         else{
             echo "Error update record:" . mysqli_error($conn);
+        }
+
+    mysqli_close($conn);
+}
+
+function newUser(){
+    $conn = connect();
+    $uname = $_POST['uname'];
+    $ulogin = $_POST['ulogin'];
+    $upassword = $_POST['upassword'];
+    $uemail = $_POST['uemail'];
+    $urole_id = $_POST['urole_id'];
+
+    $sql = "INSERT INTO users(username, login, password, email, role_id)
+    VALUES('$uname', '$ulogin', '".md5($upassword)."', '$uemail', '$urole_id')";
+
+        if(mysqli_query($conn, $sql)){
+            // session_start();
+            // $usname = $_SESSION['username'];
+            // $passw = $_SESSION['password'];
+            // session_write_close();
+            echo "1";
+        }
+        else{
+            echo "Error:" . $sql . "<br>" . mysqli_error($conn);
         }
 
     mysqli_close($conn);
@@ -132,8 +222,12 @@ function loadGoods(){
 
 function loadProfile(){
     $conn = connect();
+
+    session_start();
     $usname = $_SESSION['username'];
     $passw = $_SESSION['password'];
+    session_write_close();
+    
     $sql = "SELECT * FROM users WHERE username = '$usname' and `password` = '".md5($passw)."'";
     $result = mysqli_query($conn, $sql);
 
@@ -152,8 +246,11 @@ function loadProfile(){
 
 function loadCart(){
     $conn = connect();
+
+    session_start();
     $usname = $_SESSION['username'];
     $passw = $_SESSION['password'];
+    session_write_close();
     
     $sql = "
     SELECT 
@@ -213,7 +310,11 @@ function saveCart(){
 
 function saveMiniCart(){    
     $conn = connect();
+    
+    session_start();
     $id_users = $_SESSION['id'];
+    session_write_close();
+
     $id_goods = $_POST['id_goods'];
     $count = $_POST['count'];
     
@@ -248,7 +349,11 @@ function deleteCart(){
 
 function insertCart(){    
     $conn = connect();
+
+    session_start();
     $id_users = $_SESSION['id'];
+    session_write_close();
+
     $id_goods = $_POST['id_goods'];
     $quantity = 1;
     
@@ -323,7 +428,10 @@ function getProductInfo() {
 
 function updateProfile(){
     $conn = connect();
+
+    session_start();
     $id = $_SESSION['id'];
+
     // removes backslashes
     $username = stripslashes($_REQUEST['username']);
     // escapes special characters in a string
@@ -334,8 +442,8 @@ function updateProfile(){
     $password = mysqli_real_escape_string($conn, $password);
     $login = stripslashes($_REQUEST['login']);
     $login = mysqli_real_escape_string($conn, $login);
-    // $img = stripslashes($_REQUEST['img']);
-    // $img = mysqli_real_escape_string($conn, $img);
+    $role_id = stripslashes($_REQUEST['role_id']);
+	$role_id = mysqli_real_escape_string($conn, $role_id);
 
     // Обработка загрузки изображения
     $img = "";
@@ -350,6 +458,7 @@ function updateProfile(){
                 if ($imageFileType == "jpg" || $imageFileType == "png" || $imageFileType == "jpeg" || $imageFileType == "gif") {
                     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
                         $img = basename($_FILES["fileToUpload"]["name"]);
+                        $_SESSION['img'] = $img;
                     } else {
                         echo "Извините, произошла ошибка при загрузке вашего файла.";
                         exit;
@@ -367,12 +476,19 @@ function updateProfile(){
             exit;
         }
     } else {
-        $img = stripslashes($_REQUEST['img']);
+        $img = 'no-ava.png';
         $img = mysqli_real_escape_string($conn, $img);
+        $_SESSION['img'] = 'no-ava.png';
     }
 
-    $sql = "UPDATE `users` SET `username` = '$username', `login` = '$login', `email` = '$email', `password` = '".md5($password)."', `img` = '$img' WHERE `id` = '$id'";
-
+    $sql = "UPDATE `users` SET `username` = '$username', `login` = '$login', `email` = '$email', `password` = '".md5($password)."', `img` = '$img', `role_id` = '$role_id' WHERE `id` = '$id'";
+    
+    $_SESSION['id'] = $id;
+    $_SESSION['username'] = $username;
+    $_SESSION['password'] = $password;
+    $_SESSION['role_id'] = $role_id;
+    session_write_close();
+    
     if(mysqli_query($conn, $sql)){
         echo "1";
     } else {

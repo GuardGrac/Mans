@@ -545,7 +545,7 @@ display: block;
 }
 
 .nav__toggle-menu {
-  position: relative;
+  	position: relative;
 	background-color: transparent;
 	border: none;
 	cursor: pointer;
@@ -557,7 +557,7 @@ display: block;
 	vertical-align: middle;
 	width: 50px;
 	z-index: 1110;
-  margin: 0px;
+  	margin: 0px;
 }
 
 .nav__toggle-menu span {

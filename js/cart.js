@@ -1,6 +1,5 @@
 var cart = {};
 
-
 function init() {
     $.post(
         "admin/core.php", 
@@ -9,7 +8,7 @@ function init() {
     )
 }
 
-const catalog = $.getJSON('/goods.json', data => data);
+// const catalog = $.getJSON('/goods.json', data => data);
 
 function loadCart(data){    
     //проверяю есть ли в localStorage запись cart
@@ -99,7 +98,7 @@ function plusGoods(){
         );
     }
     else {
-        alert('саси')
+        alert('Товар закончился на складе')
     }
 
     showCart();
