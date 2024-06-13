@@ -50,7 +50,7 @@ function selectUsers(){
 
 function saveToDbUSer(){
     var id = $('#uid').val();
-    if(id!="") {
+    if(id!="" && $('#uname').val().length > 0 && $('#ulogin').val().length > 0 && $('#upassword').val().length > 0 && $('#uemail').val().length > 0 && $('#urole_id').val().length > 0) {
         $.post(
             "core.php",
             {
@@ -73,7 +73,7 @@ function saveToDbUSer(){
             }
         );
     }
-    else{
+    else if($('#uname').val().length > 0 && $('#ulogin').val().length > 0 && $('#upassword').val().length > 0 && $('#uemail').val().length > 0 && $('#urole_id').val().length > 0){
         $.post(
             "core.php",
             {
@@ -95,6 +95,9 @@ function saveToDbUSer(){
                 }
             }
         );
+    }
+    else{
+        alert("Поля пустые");
     }
 }
 
@@ -137,7 +140,8 @@ function selectGoods(){
 
 function saveToDb(){
     var id = $('#gid').val();
-    if(id!="") {
+    if(id!="" && $('#gname').val() > 0 && $('#gcost').val() > 0 && $('#gdescr').val() > 0 && $('#gorder').val() > 0 && $('#gimg').val() > 0
+    && $('#gcolor').val() > 0 && $('#gsize').val() > 0 && $('#gstruct').val() > 0 && $('#gavail_quan').val() > 0 && $('#gcateg').val() > 0) {
         $.post(
             "core.php",
             {
@@ -166,7 +170,8 @@ function saveToDb(){
             }
         );
     }
-    else{
+    else if($('#gname').val() > 0 && $('#gcost').val() > 0 && $('#gdescr').val() > 0 && $('#gorder').val() > 0 && $('#gimg').val() > 0
+    && $('#gcolor').val() > 0 && $('#gsize').val() > 0 && $('#gstruct').val() > 0 && $('#gavail_quan').val() > 0 && $('#gcateg').val() > 0){
         $.post(
             "core.php",
             {
@@ -193,6 +198,9 @@ function saveToDb(){
                 }
             }
         );
+    }
+    else{
+        alert("Поля пустые");
     }
 }
 

@@ -1,8 +1,8 @@
 <?php
 session_start();
-// if(!isset($_SESSION["id"])){
-//     header("Location: /login-signup-form/login.php?NotRegistered");
-// }
+if(!isset($_SESSION["id"])){
+    header("Location: /login-signup-form/login.php?NotRegistered");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

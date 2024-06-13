@@ -431,6 +431,7 @@ function updateProfile(){
 
     session_start();
     $id = $_SESSION['id'];
+    $role_id = $_SESSION['role_id'];
 
     // removes backslashes
     $username = stripslashes($_REQUEST['username']);
@@ -442,8 +443,8 @@ function updateProfile(){
     $password = mysqli_real_escape_string($conn, $password);
     $login = stripslashes($_REQUEST['login']);
     $login = mysqli_real_escape_string($conn, $login);
-    $role_id = stripslashes($_REQUEST['role_id']);
-	$role_id = mysqli_real_escape_string($conn, $role_id);
+    // $role_id = stripslashes($_REQUEST['role_id']);
+	// $role_id = mysqli_real_escape_string($conn, $role_id);
 
     // Обработка загрузки изображения
     $img = "";
