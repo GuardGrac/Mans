@@ -289,6 +289,13 @@ body{
 	background-color: #ffffff;
 	padding: 20px;
 	border: solid black 1px;
+	transition: 0.2s;
+}
+
+.cart:hover{
+	scale: 1.05;
+	transition: 0.5s;
+	transition-duration: 0.2s;
 }
 
 .cart .goods-image{
@@ -451,7 +458,14 @@ clear: both;
 	font-family: "Mulish", sans-serif;
     font-size: 20px;
 	border-bottom: 2px solid black;
+	transition: 0.5s;
 	display: flex;
+}
+
+.mini-goods:hover{
+	scale: 1.05;
+	transition-delay: 0.2s;
+	transition: 0.5s;
 }
 
 .mini-goods p{
@@ -549,10 +563,17 @@ clear: both;
  align-items: center;
  font-family: "Mulish", sans-serif;
  font-size: 20px;
+ background-color: #ffffff;
  font-weight: 400;
  justify-content: space-evenly;
  padding: 10px;
- border: 1px solid black;
+ border: 2px solid black;
+ border-radius: 25px;
+ transition: 0.3s;
+}
+
+.product-in-cart:hover{
+	scale: 1.02;
 }
 
 .del-goods{
@@ -667,10 +688,22 @@ clear: both;
 	display: flex;
 	font-size: 20px;
 	height: 60px;
+	transition: 0.2s;
+}
+
+.search-form-bar{
+	transition: 0.2s;
 }
 
 .search-form-bar:has(input:focus) {
 	filter: drop-shadow(0 10px 10px rgb(0, 0, 0));
+}
+.search-form-bar:has(input:focus):hover {
+	scale: 1;
+}
+
+.search-bar:hover{
+	scale: 1.02;
 }
 
 .reset-research{

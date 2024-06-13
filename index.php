@@ -150,7 +150,7 @@
            <svg width="50" viewBox="0 0 35 50" fill="none" stroke="black" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1.27147 16.7208C1.4857 19.2272 3.62235 21.3555 6.37636 21.6708C7.3891 21.7866 8.41876 21.868 9.4622 21.868C10.5056 21.868 11.5353 21.7866 12.548 21.6708C15.3021 21.3555 17.4386 19.2272 17.6529 16.7208C17.8014 14.984 17.9245 13.2026 17.9245 11.3874C17.9245 9.57218 17.8014 7.79075 17.6529 6.05397C17.4386 3.54749 15.3021 1.41917 12.548 1.10398C11.5353 0.988086 10.5056 0.906738 9.4622 0.906738C8.41876 0.906738 7.3891 0.988086 6.37636 1.10398C3.62235 1.41917 1.4857 3.54749 1.27147 6.05397C1.12302 7.79075 1 9.57218 1 11.3874C1 13.2026 1.12302 14.984 1.27147 16.7208Z" stroke="black"/>
                 <g class="mouse-anim">
-                    <path d="M9.46484 5.09473L9.46484 8.23892" stroke="#E0E0E0" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M9.46484 5.09473L9.46484 8.23892" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"/>
                 </g>
             </svg>    
         </div> 
@@ -256,7 +256,7 @@
 
             <button class="batch about-us-button xl:text-[32px] sm:text-[20px] sm:h-[60px]">
 
-                Это про меня!
+                Вперёд!
 
                 <svg class="arrow xl:w-[60px] xl:h-[60px] sm:h-[50px] sm:w-[50px]" version="1.1" id="Layer_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="96px" height="96px"
@@ -296,7 +296,7 @@
 
             <button class="batch about-us-button xl:text-[32px] sm:text-[20px] sm:h-[60px]">
 
-                Это про меня!
+                Вперёд!
 
                 <svg class="arrow xl:w-[60px] xl:h-[60px] sm:h-[50px] sm:w-[50px]" version="1.1" id="Layer_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="96px" height="96px"
@@ -336,7 +336,7 @@
 
             <button class="batch about-us-button xl:text-[32px] sm:text-[20px] sm:h-[60px]">
 
-                Это про меня!
+                Вперёд!
 
                 <svg class="arrow xl:w-[60px] xl:h-[60px] sm:h-[50px] sm:w-[50px]" version="1.1" id="Layer_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="96px" height="96px"
@@ -376,7 +376,7 @@
 
             <button class="batch about-us-button xl:text-[32px] sm:text-[20px] sm:h-[60px]">
 
-                Это про меня!
+                Вперёд!
 
                 <svg class="arrow xl:w-[60px] xl:h-[60px] sm:h-[50px] sm:w-[50px]" version="1.1" id="Layer_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="96px" height="96px"
@@ -416,7 +416,7 @@
 
             <button class="batch about-us-button xl:text-[32px] sm:text-[20px] sm:h-[60px]">
 
-                Это про меня!
+                Вперёд!
 
                 <svg class="arrow xl:w-[60px] xl:h-[60px] sm:h-[50px] sm:w-[50px]" version="1.1" id="Layer_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="96px" height="96px"
@@ -456,7 +456,7 @@
 
             <button class="batch about-us-button xl:text-[32px] sm:text-[20px] sm:h-[60px]">
 
-                Это про меня!
+                Вперёд!
 
                 <svg class="arrow xl:w-[60px] xl:h-[60px] sm:h-[50px] sm:w-[50px]" version="1.1" id="Layer_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="96px" height="96px"
@@ -581,7 +581,7 @@
             </div>
     </section>
 
-    <section class="flex w-screen justify-center items-center spacing-between-sec">
+    <section class="flex w-screen justify-center items-center">
         <div class="flex flex-col w-screen items-start 2xl:mx-20 mx-auto">
             <div class="2xl:pl-[8vw] xl:pl-[10vw] pl-[8vw] 2xl:text-[63px] xl:text-[58px] lg:text-[56px] sm:text-[36px] md:text-[42px] 2md:text-[48px] uppercase">
                 <p class="batch font-['FoglihtenNo06']">Что говорят наши<br class="hidden 2md:block"> клиенты о 

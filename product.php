@@ -107,7 +107,7 @@ if (isset($_GET['id'])) {
                 <div class="flex flex-row w-full justify-center bg-stone-100 rounded-[25px]">
 
                 <div class="w-[800px] flex justify-center">
-                    <img class="py-2 w-[700px]" src="/images/<?php echo htmlspecialchars($goods['img']); ?>" alt="<?php echo htmlspecialchars($goods['name']); ?>">
+                    <img class="py-2 w-[700px] hover:scale-[1.1] transition-[0.2s]" src="/images/<?php echo htmlspecialchars($goods['img']); ?>" alt="<?php echo htmlspecialchars($goods['name']); ?>">
                 </div>
 
                     <div class="flex flex-col h-full w-[560px]">

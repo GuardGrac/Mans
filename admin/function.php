@@ -255,7 +255,7 @@ function loadCart(){
     $sql = "
     SELECT 
         `user_cart`.`id`, 
-        `user_cart`.`quantity`, 
+        `user_cart`.`quantity`,
         `goods`.`id` AS 'id_goods',
         `goods`.`name`,
         `goods`.`cost`,

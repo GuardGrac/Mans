@@ -194,11 +194,12 @@ function showMiniCart(){
     if(Object.keys(cart).length){
         var out="";
     for(var key in cart){
-        out +='<div class="mini-goods">';
+        out +='<div class="mini-goods relative">';
         out +=`<img class="goods-image-mini" src="/images/${cart[key].img}" alt="">`;
         out +='<div class="name-count-split">';
         out +=`<p>${cart[key].name.split(' ')[0]}...</p>`;
         out +=`<p>${parseInt(cart[key].quantity)} шт.</p>` + '<br>';
+        out += `<div class="absolute top-[0px] left-[0px] w-full h-full z-[1]" onclick="openProduct(${cart[key].id_goods})"></div>`;
         out +='</div>';
         out +='</div>';
     }

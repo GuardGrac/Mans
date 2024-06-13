@@ -41,7 +41,7 @@ function showCart(){
         out += `</div>`;
 
         for(var id in cart){
-            out += `<div class="product-in-cart w-[100%]" id="${cart[id].id}">`;
+            out += `<div class="product-in-cart relative w-[100%] my-[2px]" id="${cart[id].id}">`;
             out += '<div class="flex basis-1/12 justify-center">';
             out += `<img class="cart-img" src="images\\${cart[id].img}">`;
             out += `</div>`;
@@ -54,19 +54,20 @@ function showCart(){
             out += '<div class="flex basis-1/12 justify-center">';
             out += `<p class="product-count w-[60px]">${parseInt(cart[id].quantity)}</p>`;
             out += `</div>`;
-            out += '<div class="flex basis-1/12 justify-center">';
+            out += '<div class="flex basis-1/12 justify-center z-[2]">';
             out += `<button data-id="${id}" class="del-goods">Удалить</button>`;
             out += `</div>`;
-            out += '<div class="flex basis-1/12 justify-center">';
+            out += '<div class="flex basis-1/12 justify-center z-[2]">';
             out += `<button data-id="${id}" class="plus-goods">+</button>`;
             out += `</div>`;
-            out += '<div class="flex basis-1/12 justify-center">';
+            out += '<div class="flex basis-1/12 justify-center z-[2]">';
             out += `<button data-id="${id}" class="minus-goods">-</button>`;
             out += `</div>`;
-            out += '<div class="flex basis-1/12 justify-center">';
+            out += '<div class="flex basis-1/12 justify-center z-[2]">';
             out += `<p class="w-[100px]">${parseInt(cart[id].quantity) * parseInt(cart[id].cost)}₽</p>`;
             out += `</div>`;
             out += `<br>`;
+            out += `<div class="absolute top-[0px] left-[0px] w-full h-full z-[1]" onclick="openProduct(${cart[id].id_goods})"></div>`;
             out += `</div>`;
         }  
         $('.main-cart').html(out);
@@ -75,6 +76,10 @@ function showCart(){
         $('.minus-goods').on('click', minusGoods);
     }
     // });
+}
+
+function openProduct(id_goods) {
+    window.location.href = 'product.php?id=' + id_goods;  
 }
 
 function delGoods(){

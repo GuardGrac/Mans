@@ -79,7 +79,7 @@
 
     <header></header>
 
-    <main class="main-section">
+    <main class="main-section flex flex-col items-center">
         <h1 class="batch catalogue-heading">
             Каталог
         </h1>
@@ -87,7 +87,7 @@
 
         <form id="search-form" class="batch relative items-center z-50">
             <!-- Строка поиска -->
-            <label class="flex justify-center search-form-bar">
+            <label class="flex justify-center items-center search-form-bar w-fit">
                 <input id="search" type="text" class="outline-none search-bar" spellcheck="false" autocomplete="off" placeholder="Введите что-нибудь"> 
                 <button class="reset-research uppercase" id="reset" type="reset" title="Нажми на меня чтобы очистить поле">&#215;</button>
             </label>
@@ -108,7 +108,7 @@
         </div>
     </main>
 
-    <footer class="flex w-screen justify-center spacing-between-sec items-center mx-auto mt-[10vh]">
+    <footer class="flex w-screen justify-center spacing-between-sec items-center mx-auto">
         <div class="flex flex-col w-screen items-center leading-[2rem] font-['Mulish']">
             <span class="footerbatch mx-5 2xl:text-[86px] text-5xl text-center relative line1 italiana py-5">
             ALPHA
