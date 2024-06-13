@@ -218,7 +218,7 @@ function showMiniCart(){
     $('.mini-cart').html(out);
     
     document.getElementById('cart-button').addEventListener('click', function() {
-        window.location.href = 'cart.html';
+        window.location.href = 'cart.php';
     });
     }
    

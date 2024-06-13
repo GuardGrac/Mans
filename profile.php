@@ -163,7 +163,7 @@ session_start();
                     </li>
                     
                     <li>
-                        <a href="/cart.html" class="batch links links_burger" link="#000000" vlink="000000">
+                        <a href="/cart.php" class="batch links links_burger" link="#000000" vlink="000000">
                             Корзина
                         </a>
                     </li>

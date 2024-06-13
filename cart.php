@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(!isset($_SESSION["id"])){
+    header("Location: /login-signup-form/login.php?NotRegistered");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -103,7 +109,7 @@
                 </li>
                 
                 <li>
-                    <a href="/cart.html" class="links links_burger" link="#000000" vlink="000000">
+                    <a href="/cart.php" class="links links_burger" link="#000000" vlink="000000">
                         Корзина
                     </a>
                 </li>

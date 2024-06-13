@@ -1,5 +1,9 @@
 <?php
 require_once('admin/function.php');
+session_start();
+if(!isset($_SESSION["id"])){
+    header("Location: /login-signup-form/login.php?NotRegistered");
+}
 $conn = connect();
 
 $query = "SELECT * FROM goods";
@@ -215,7 +219,7 @@ if (isset($_GET['id'])) {
                             </li>
                             
                             <li>
-                                <a href="/cart.html" class="links links_burger" link="#000000" vlink="000000">
+                                <a href="/cart.php" class="links links_burger" link="#000000" vlink="000000">
                                     Корзина
                                 </a>
                             </li>
