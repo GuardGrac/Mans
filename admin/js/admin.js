@@ -50,7 +50,7 @@ function selectUsers(){
 
 function saveToDbUSer(){
     var id = $('#uid').val();
-    if(id!="" && $('#uname').val().length > 0 && $('#ulogin').val().length > 0 && $('#upassword').val().length > 0 && $('#uemail').val().length > 0 && $('#urole_id').val().length > 0) {
+    if(id!="") {
         $.post(
             "core.php",
             {
@@ -64,7 +64,7 @@ function saveToDbUSer(){
             },
             function(data) {
                 if(data == 1){
-                    alert('Пользователь добавлен');
+                    alert('Пользователь изменена');
                     init(); 
                 }
                 else{
@@ -73,7 +73,7 @@ function saveToDbUSer(){
             }
         );
     }
-    else if($('#uname').val().length > 0 && $('#ulogin').val().length > 0 && $('#upassword').val().length > 0 && $('#uemail').val().length > 0 && $('#urole_id').val().length > 0){
+    else {
         $.post(
             "core.php",
             {
@@ -95,9 +95,6 @@ function saveToDbUSer(){
                 }
             }
         );
-    }
-    else{
-        alert("Поля пустые");
     }
 }
 
@@ -140,8 +137,7 @@ function selectGoods(){
 
 function saveToDb(){
     var id = $('#gid').val();
-    if(id!="" && $('#gname').val() > 0 && $('#gcost').val() > 0 && $('#gdescr').val() > 0 && $('#gorder').val() > 0 && $('#gimg').val() > 0
-    && $('#gcolor').val() > 0 && $('#gsize').val() > 0 && $('#gstruct').val() > 0 && $('#gavail_quan').val() > 0 && $('#gcateg').val() > 0) {
+    if(id!="") {
         $.post(
             "core.php",
             {
@@ -161,7 +157,7 @@ function saveToDb(){
             },
             function(data) {
                 if(data == 1){
-                    alert('запись добавлена');
+                    alert('запись изменена');
                     init(); 
                 }
                 else{
@@ -170,8 +166,7 @@ function saveToDb(){
             }
         );
     }
-    else if($('#gname').val() > 0 && $('#gcost').val() > 0 && $('#gdescr').val() > 0 && $('#gorder').val() > 0 && $('#gimg').val() > 0
-    && $('#gcolor').val() > 0 && $('#gsize').val() > 0 && $('#gstruct').val() > 0 && $('#gavail_quan').val() > 0 && $('#gcateg').val() > 0){
+    else{
         $.post(
             "core.php",
             {
@@ -198,9 +193,6 @@ function saveToDb(){
                 }
             }
         );
-    }
-    else{
-        alert("Поля пустые");
     }
 }
 
